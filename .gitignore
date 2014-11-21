@@ -4,7 +4,8 @@
 /bootstrap/compiled.php
 .env.*.php
 .env.php
-
+/app/config/local/
+composer.lock
 
 ### Composer ###
 composer.phar

@@ -1,4 +1,8 @@
-<?php
+<?php namespace Coreproc\Procex\Controller;
+
+use Coreproc\Procex\Model\Organization;
+use Coreproc\Procex\Repository\Test;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends BaseController {
 
@@ -17,15 +21,12 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		return \View::make('hello');
 	}
 
     public function index()
     {
-        Test::where('test1', '=', true)
-            ->where('test2', '=', 'tes3')
-            ->limit(10)
-            ->get();
+        $org = Organization::has('bidInformations')->get();
     }
 
 }

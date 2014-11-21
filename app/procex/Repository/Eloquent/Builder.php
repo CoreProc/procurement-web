@@ -1,8 +1,8 @@
 <?php
 
-namespace Coreproc\Procurement\Database\Eloquent;
+namespace Coreproc\Procex\Repository\Eloquent;
 
-use Coreproc\Procurement\Database\Query\Builder as ProcurementEloquentBuilder;
+use Coreproc\Procex\Repository\Query\Builder as ProcurementEloquentBuilder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 
 class Builder extends EloquentBuilder
@@ -11,8 +11,9 @@ class Builder extends EloquentBuilder
     /**
      * Create a new Eloquent query builder instance.
      *
-     * @param  \Coreproc\Procurement\Database\Query\Builder $query
-     * @return \Coreproc\Procurement\Database\Eloquent\Builder
+     * @param  \Coreproc\Procex\Repository\Query\Builder $query
+     *
+     * @return \Coreproc\Procex\Repository\Eloquent\Builder
      */
     public function __construct(ProcurementEloquentBuilder $query)
     {

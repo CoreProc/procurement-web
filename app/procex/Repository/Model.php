@@ -1,10 +1,10 @@
 <?php
 
-namespace Coreproc\Procurement\Database;
+namespace Coreproc\Procex\Repository;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Coreproc\Procurement\Database\Query\Builder as QueryBuilder;
-use Coreproc\Procurement\Database\Eloquent\Builder as ProcurementBuilder;
+use Coreproc\Procex\Repository\Query\Builder as QueryBuilder;
+use Coreproc\Procex\Repository\Eloquent\Builder as ProcurementBuilder;
 
 class Model extends EloquentModel
 {
@@ -12,7 +12,7 @@ class Model extends EloquentModel
     /**
      * Overrides the querybuilder
      *
-     * @return \Coreproc\Procurement\Database\Query\Builder
+     * @return \Coreproc\Procex\Repository\Query\Builder
      */
     protected function newBaseQueryBuilder()
     {

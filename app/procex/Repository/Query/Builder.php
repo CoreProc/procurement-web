@@ -1,6 +1,6 @@
 <?php
 
-namespace Coreproc\Procurement\Database\Query;
+namespace Coreproc\Procex\Repository\Query;
 
 use \Illuminate\Database\Query\Builder as EloquentBuilder;
 

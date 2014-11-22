@@ -10,6 +10,8 @@ ProcEx API base url is **/api**
 * (string) **resource_id**
 * (array[string]) **filters[]**
 
+### GET /bid-information
+
 ### GET /areas
 
 ### GET /classifications

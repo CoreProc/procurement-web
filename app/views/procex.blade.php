@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
-<body layout="column" layout-fill>
+<body layout="column" layout-fill ng-controller="RootCtrl">
 
 <div layout-fill class="overlay resultsOverlay">
     <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->

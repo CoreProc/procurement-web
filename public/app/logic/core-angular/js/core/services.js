@@ -3,4 +3,5 @@
         .module('app.services', []);
 })(angular);
 
-// @prepros-append "services/sample.js"
+// @prepros-append "services/utility.js"
+// @prepros-append "services/categories.js"

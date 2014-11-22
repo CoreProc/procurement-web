@@ -29,7 +29,7 @@ class BidInformation extends TransformerAbstract
             'pre_bid_date'         => $bidInformation->pre_bid_date,
             'pre_bid_venue'        => $bidInformation->pre_bid_venue,
             'procuring_entity_org' => $bidInformation->procuringEntity,
-            'publish_date'         => $bidInformation->publish_date,
+            'publish_date'         => $bidInformation->publish_date ,
             'closing_date'         => $bidInformation->closing_date,
             'contact'              => [
                 'person'  => $bidInformation->contact_person,

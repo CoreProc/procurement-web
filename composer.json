@@ -8,7 +8,9 @@
 		"laravel/framework": "4.2.*",
         "guzzlehttp/guzzle": "~5.0",
         "barryvdh/laravel-ide-helper": "1.*",
-        "coreproc/globelabs-api": "0.*"
+        "coreproc/globelabs-api": "0.*",
+        "toin0u/geotools-laravel": "0.2.*",
+        "jlapp/swaggervel": "dev-master"
 	},
 	"autoload": {
         "psr-4": {

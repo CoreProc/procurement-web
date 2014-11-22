@@ -11,7 +11,9 @@ namespace Coreproc\Procex\Model;
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 
 class ProjectLocation extends ProcurementModel {
-    protected $table = '1da548c2-d141-4d9a-b159-8d36606d2ae2';
+    protected $table = '116b0812-23b4-4a92-afcc-1030a0433108';
 
-
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 } 

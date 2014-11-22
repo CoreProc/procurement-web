@@ -12,14 +12,14 @@
     Left Nav!
 </md-sidenav>
 
-<md-content>
-    <aside flex="33">
+<md-content layout="column" layout-fill>
+    <aside flex>
         <md-button ng-click="openLeftMenu()">Open Left Nav</md-button>
     </aside>
-    <main flex>
-        <leaflet></leaflet>
+    <main flex="33">
+        <leaflet height="100%" maxbounds="bounds" defaults="config"></leaflet>
     </main>
-    <aside flex="33"></aside>
+    <aside flex></aside>
 </md-content>
 
 <md-sidenav md-component-id="right" class="md-sidenav-right">

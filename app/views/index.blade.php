@@ -11,11 +11,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-    {{ HTML::style('assets/css/normalize.css') }}
-    {{ HTML::style('assets/css/foundation/css/foundation.min.css') }}
-    {{ HTML::style('assets/css/main.css') }}
-    {{ HTML::style('assets/js/vendor/modernizr-2.6.2.min.js') }}
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <% HTML::style('assets/css/normalize.css') %>
+    <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
+    <% HTML::style('assets/css/main.css') %>
+    <% HTML::style('assets/js/vendor/modernizr-2.6.2.min.js') %>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -31,16 +32,45 @@
                 <h1 class="title">
                     <span style="color: #16A0E7;">Proc</span><span style="color: #F22727;">Ex</span>
                 </h1>
-                <div class="caption">lorem ipsum dolor sit amet dolorem</div>
+                <div class="caption">Procurement Explorer</div>
+                <div class="map-marker"><i class="fa fa-map-marker"></i></div>
             </div>
         </div>
     </div>
 </header>
 
-<div class="row">
-    <div class="large-12 columns">
-        This is the content
+<div class="content">
+    <h2 class="heading">What we offer</h2>
+
+    <div class="row">
+        <div class="large-4 columns content-features">
+            <img src="assets/img/flexible.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
+        <div class="large-4 columns content-features">
+            <img src="assets/img/lower-interest.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
+        <div class="large-4 columns content-features">
+            <img src="assets/img/one-day.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
     </div>
+    <div class="row">
+        <div class="large-4 columns content-features">
+            <img src="assets/img/partnership.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
+        <div class="large-4 columns content-features">
+            <img src="assets/img/transparent.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
+        <div class="large-4 columns content-features">
+            <img src="assets/img/flexible.png" alt="icon" />
+            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        </div>
+    </div>
+
 </div>
 
 
@@ -56,8 +86,8 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-{{ HTML::script('assets/js/plugins.js') }}
-{{ HTML::script('assets/js/main.js') }}
+<% HTML::script('assets/js/plugins.js') %>
+<% HTML::script('assets/js/main.js') %>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>

@@ -119,8 +119,8 @@ header {
 header .title {
     color: #fff;
     font-weight: bold;
-    font-size: 97px;
-    margin-top: 50px;
+    font-size: 80px;
+    margin-top: 90px;
     margin-bottom: 0;
     text-align: center;
     /* Fallback for web browsers that doesn't support RGBa */
@@ -129,9 +129,38 @@ header .title {
 header .caption {
     color: #fff;
     text-align: center;
-    font-size: 16px;
+    font-size: 21px;
+}
+.map-marker {
+    text-align: center;
+}
+header .fa-map-marker {
+    font-size: 60px;
+    margin-top: 15px;
+    color: #e85f5f;
+}
+.content {
+    min-height: 300px;
+}
+.content h2 {
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}
+.content-features img {
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+.content-features p {
+    font-size: 14px;
 }
 
+footer {
+    background: #000;
+    color: #fff;
+    padding: 15px 0 15px 0;
+}
 
 
 

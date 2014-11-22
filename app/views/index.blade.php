@@ -30,56 +30,108 @@
         <div class="row">
             <div class="large-12 columns">
                 <h1 class="title">
-                    <span style="color: #16A0E7;">Proc</span><span style="color: #F22727;">Ex</span>
+                    <span class="blue">Proc</span><span class="red">Ex</span>
                 </h1>
                 <div class="caption">Procurement Explorer</div>
                 <div class="map-marker"><i class="fa fa-map-marker"></i></div>
+                <div class="header-button"><a href="#" class="button large success">Get Started</a></div>
             </div>
         </div>
     </div>
 </header>
 
-<div class="content">
-    <h2 class="heading">What we offer</h2>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="large-12 columns">
+                <h2 class="heading">What we offer</h2>
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut. adipisci vel delectus, pariatur propagabant. consequatur sibi vero, voluptate consequatur. ipsa colebatur et, pariatur repellendus. dolor ullam consequatur id.</p>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="large-4 columns content-features">
+                <img src="assets/img/flexible.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+            <div class="large-4 columns content-features">
+                <img src="assets/img/lower-interest.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+            <div class="large-4 columns content-features">
+                <img src="assets/img/one-day.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-4 columns content-features">
+                <img src="assets/img/partnership.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+            <div class="large-4 columns content-features">
+                <img src="assets/img/transparent.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+            <div class="large-4 columns content-features">
+                <img src="assets/img/flexible.png" alt="icon" />
+                <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <h2 class="heading">Contact Us</h2>
+
+            </div>
+        </div>
+
+
+    </div> <!--End of .container-->
+</div> <!--End of .wrapper-->
+
+
+
+
+<div class="sub-footer">
     <div class="row">
-        <div class="large-4 columns content-features">
-            <img src="assets/img/flexible.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        <div class="large-5 columns">
+            <div class="footer-about">
+                <h4>About <strong><span class="blue">Proc</span><span class="red">Ex</span></strong></h4>
+                lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut. id ipsum deinde, repellat minim. mollit odit culpa qui aut.
+                id ipsum deinde, repellat minim. mollit odit culpa qui aut.
+            </div>
         </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/lower-interest.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        <div class="large-5 columns">
+            <div class="footer-about">
+                <h4>Powered by</h4>
+                <div class="row sponsor">
+                    <div class="large-12 columns">
+                        <img src="<% asset('assets/img/ps_logo.jpg'); %>" alt="logo" />
+                        <img src="<% asset('assets/img/dbm_logo.jpg'); %>" alt="logo" />
+                        <img src="<% asset('assets/img/gppb_logo.png'); %>" alt="logo" />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/one-day.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
+        <div class="large-2 columns">
+            <div class="footer-about">
+                <h4>Follow Us</h4>
+                <div class="row social">
+                    <div class="large-12 columns">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="large-4 columns content-features">
-            <img src="assets/img/partnership.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/transparent.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/flexible.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-    </div>
-
 </div>
-
-
-
 
 <footer>
     <div class="row">
-        <div class="large-12 columns">
-            This is the footer
+        <div class="large-12 columns footer-content">
+            20014-2015 DBM ProcEx. All rights reserved.
         </div>
     </div>
 </footer>
@@ -91,7 +143,7 @@
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=1
 		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
 		e.src='//www.google-analytics.com/analytics.js';

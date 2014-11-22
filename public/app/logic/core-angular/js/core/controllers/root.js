@@ -9,7 +9,9 @@
         CategoryService
             .getAll()
             .then(function(response) {
-                console.log(response);
+                if(response.status != 'ok')
+                    throw new Error('Error getting categories');
+                vm.categories = response.data;
             });
     }
 
@@ -20,5 +22,4 @@
     angular
         .module('app.controllers')
         .controller('RootCtrl', RootCtrl);
-
 })(angular);

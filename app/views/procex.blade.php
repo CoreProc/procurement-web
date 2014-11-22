@@ -6,12 +6,11 @@
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
-<body layout="row" layout-fill ng-controller="RootCtrl">
+<body layout="row" layout-fill ng-controller="RootCtrl as ctrl">
 
-<div layout-fill class="overlay resultsOverlay">
+<div layout-fill class="overlay resultsOverlay" style="padding-top: 160px">
     <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
-
-    <div class="panel panel-bidList">
+    <div class="panel panel-bidList" style="height: 48px">
         <select>
             <option>adfasdfasdf1</option>
             <option>adfasdfasdf2</option>
@@ -19,6 +18,11 @@
             <option>adfasdfasdf4</option>
             <option>adfasdfasdf5</option>
         </select>
+    </div>
+    <div class="panel panel-tenderStatuses" style="top: 51px; height: 104px">
+        <div ng-repeat="status in tenderStatuses">
+            <md-checkbox ng-model="status" aria-label="{{ status }}">{{ status }}</md-checkbox>
+        </div>
     </div>
     <div class="panel panel-searchResults">
         <md-card ng-repeat="card in cardTest" class="card md-default-theme">
@@ -39,7 +43,7 @@
 
 <md-sidenav style="width: 500px" is-locked-open="true" component-id="regions" style="height: 100%" layout-fill>
     <div layout="vertical" layout-fill style="height: 100%">
-        <md-toolbar class="md-grey-theme">
+        <md-toolbar class="md-default-theme">
             <div class="md-toolbar-tools">
                 <span>Filters</span>
             </div>
@@ -47,7 +51,7 @@
         <div flex style="height: 100%">
             <div layout-fill style="height: 100%">
                 <md-content layout-fill scroll-y class="sidebar sidebar-regions" style="height: 100%">
-                    <md-tabs noink="true" nobar="true" selected="0" class="md-grey-theme">
+                    <md-tabs noink="true" nobar="true" selected="0" class="md-default-theme">
                         <md-tab label="Area">
                             <div layout="row">
                                 <md-content flex>
@@ -59,7 +63,14 @@
                             </div>
                         </md-tab>
                         <md-tab label="Category">
-                            Cate
+                            <div layout="row">
+                                <md-content flex>
+                                    <section ng-repeat="cat in ctrl.categories" layout="vertical">
+                                        <!-- <md-subheader>{{ region.name }}</md-subheader> -->
+                                        <md-button class="list-item">{{ cat }}</md-button>
+                                    </section>
+                                </md-content>
+                            </div>
                         </md-tab>
                         <md-tab label="Classifications">
                             Doge

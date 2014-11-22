@@ -141,6 +141,14 @@
                     }
                 ];
 
+                $rootScope.tenderStatuses = [
+                    "Cancelled",
+                    "In-Preparation",
+                    "Closed",
+                    "Shortlisted",
+                    "Awarded",
+                    "Failed"
+                ] ;
 
                 $rootScope.cardTest = [];
 

@@ -169,7 +169,14 @@ header {
     text-align: center;
     margin-top: 15px;
 }
-
+.button-container a {
+    margin-bottom: 0;
+}
+.sms-service-link {
+    text-align: center!important;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
 .social i {
     font-size: 30px;
 }

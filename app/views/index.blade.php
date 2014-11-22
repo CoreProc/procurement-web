@@ -44,6 +44,7 @@
                     <div class="caption">Procurement Explorer</div>
                     <div class="map-marker"><i class="fa fa-map-marker"></i></div>
                     <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
+                    <div class="sms-service-link"><a href="">Try our sms service</a></div>
                     <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
                     <div class="social">
                         <i class="fa fa-facebook"></i>

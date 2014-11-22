@@ -25,3 +25,4 @@ Route::group(['prefix' => '/'], function() {
 
 });
 
+Route::controller('globelabs', 'Coreproc\Procex\Controller\Web\GlobeLabsController');

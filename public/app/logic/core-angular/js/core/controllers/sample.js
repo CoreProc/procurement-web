@@ -7,7 +7,6 @@
         var vm = this;
 
         $scope.openLeftMenu = function() {
-
             //$mdSidenav('asdf').toggle();
         };
     }

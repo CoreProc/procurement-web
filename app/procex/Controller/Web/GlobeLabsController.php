@@ -47,6 +47,7 @@ class GlobeLabsController extends BaseController
     public function postIncomingSms()
     {
         Log::info('Recieved SMS... trying to read');
+
         $sms = SmsService::recieveSms();
 
         Log::info("Received message {$sms->message}");

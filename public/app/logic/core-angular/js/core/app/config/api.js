@@ -4,10 +4,8 @@
         .config([
             'RestangularProvider',
             function restangularConfig(RestangularProvider) {
-                /*
                 RestangularProvider
                     .setBaseUrl('api');
-                */
             }
         ])
     ;

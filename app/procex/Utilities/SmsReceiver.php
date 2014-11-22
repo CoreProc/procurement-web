@@ -20,8 +20,11 @@ class SmsReceiver
     {
         $this->sms = $sms;
 
-        $subscriber = Subscriber::where('subscriber_number', '=', $sms->sender->clean($sms->sender->get()))->first();
+        $subscriberNumber = $sms->sender->clean($sms->sender->get());
+
+        $subscriber = Subscriber::where('subscriber_number', '=', $subscriberNumber)->first();
         if (empty($subscriber)) {
+            Log::error("Did not find subscriber with mobile number: {$subscriberNumber}");
             return;
         }
 

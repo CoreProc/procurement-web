@@ -130,10 +130,10 @@ class SmsReceiver
 
             $total_budget_amount = $data->sum('approved_budget');
 
-            $message = '- # Prj: ' . $total_projects . '
-- # Apprv Prj: ' . $total_approved_projects . '
-- Amt Spent: ' . $total_spent_amount . '
-- Bdgt: ' . $total_budget_amount;
+            $message = '- # Prj: ' . number_format($total_projects) . '
+- # Apprv Prj: ' . number_format($total_approved_projects) . '
+- Amt Spent: PHP ' . number_format($total_spent_amount, 2) . '
+- Bdgt: PHP ' . number_format($total_budget_amount, 2);
         }
 
         $this->sendMessage($message);
@@ -214,10 +214,10 @@ class SmsReceiver
 
             $total_budget_amount = $data->sum('approved_budget');
 
-            $message = '- # Prj: ' . $total_projects . '
-- # Apprv Prj: ' . $total_approved_projects . '
-- Amt Spent: ' . $total_spent_amount . '
-- Bdgt: ' . $total_budget_amount;
+            $message = '- # Prj: ' . number_format($total_projects) . '
+- # Apprv Prj: ' . number_format($total_approved_projects) . '
+- Amt Spent: PHP ' . number_format($total_spent_amount,2) . '
+- Bdgt: PHP ' . number_format($total_budget_amount, 2);
 
             Log::info('Sending message: ' . $message);
 

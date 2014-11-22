@@ -27,4 +27,8 @@ class BidInformation extends ProcurementModel
     public function clientAgency() {
         return $this->belongsTo('Coreproc\Procex\Model\Organization', 'client_agency_orgid');
     }
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 }

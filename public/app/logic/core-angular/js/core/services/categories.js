@@ -3,8 +3,8 @@
     /**
      * @ngInject
      */
-    function SampleService(Restangular) {
-        var serviceRoute = 'sample';
+    function CategoryService(Restangular) {
+        var serviceRoute = 'categories';
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
@@ -14,19 +14,19 @@
             );
         });
 
-        /*
-        this.get = function() {
-            return restangular.one('route').get();
+        this.getAll = function(params) {
+            return restangular
+                .one('')
+                .get(params);
         };
-        */
     }
 
     // inject services to each controller constructor
-    SampleService.$inject     = ['Restangular'];
+    CategoryService.$inject     = ['Restangular'];
 
     // register controllers to Angular
     angular
         .module('app.services')
-        .service('SampleService', SampleService);
+        .service('CategoryService', CategoryService);
 
 })(angular);

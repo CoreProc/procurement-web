@@ -15,8 +15,17 @@ Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::group(['prefix' => '/'], function() {
-    Route::get('test', function() {
-        return Coreproc\Procex\Model\Organization::where('org_id','=', '31639')->limit(5)->get();
+    Route::get('testquery', function() {
+        return Coreproc\Procex\Model\BidInformation::groupBy('business_category')->lists('business_category');
+    });
+
+    Route::group(['prefix' => 'api'] , function() {
+        Route::controller('search', 'Coreproc\Procex\Controller\Api\Search');
+        Route::controller('utility', 'Coreproc\Procex\Controller\Api\Utility');
+
+        Route::controller('categories', 'Coreproc\Procex\Controller\Api\Category');
+        Route::controller('areas', 'Coreproc\Procex\Controller\Api\Area');
+        Route::controller('classifications', 'Coreproc\Procex\Controller\Api\Classification');
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');
@@ -25,3 +34,4 @@ Route::group(['prefix' => '/'], function() {
 
 });
 
+Route::controller('globelabs', 'Coreproc\Procex\Controller\Web\GlobeLabsController');

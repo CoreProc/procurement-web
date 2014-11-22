@@ -11,12 +11,12 @@ class BidInformation extends ProcurementModel
 
     public function bidLineItems()
     {
-        return $this->hasMany('Coreproc\Procex\Model\BidLineItem', 'ref_id');
+        return $this->hasMany('Coreproc\Procex\Model\BidLineItem', 'ref_id', 'ref_id');
     }
 
-    public function award()
+    public function awards()
     {
-        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id');
+        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id', 'ref_id');
     }
 
     public function procuringEntity()
@@ -27,6 +27,10 @@ class BidInformation extends ProcurementModel
     public function clientAgency()
     {
         return $this->belongsTo('Coreproc\Procex\Model\Organization', 'client_agency_orgid');
+    }
+
+    public function projectLocation() {
+        return $this->belongsTo('Coreproc\Procex\Model\ProjectLocation', 'ref_id', 'refid');
     }
 
     public static function getTableName()

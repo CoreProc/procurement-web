@@ -21,6 +21,7 @@ Route::group(['prefix' => '/'], function() {
 
     Route::group(['prefix' => 'api'] , function() {
         Route::controller('search', 'Coreproc\Procex\Controller\Api\Search');
+        Route::controller('utility', 'Coreproc\Procex\Controller\Api\Utility');
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');

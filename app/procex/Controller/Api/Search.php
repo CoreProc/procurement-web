@@ -12,20 +12,20 @@ namespace Coreproc\Procex\Controller\Api;
 use Coreproc\Procex\Repository\Request;
 
 class Search extends \Controller {
-    public function query() {
+    public function getQuery() {
         $filters = \Input::get('filters');
 
     }
 
-    public function classification() {
+    public function getClassification() {
+        $classification_id = \Input::get('classification_id');
+    }
+
+    public function getAreas() {
 
     }
 
-    public function areas() {
-
-    }
-
-    public function categories() {
+    public function getCategories() {
 
     }
 } 

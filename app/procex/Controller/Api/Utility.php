@@ -3,18 +3,22 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
+use Controller;
 use Geocoder\Geocoder;
 use Geocoder\HttpAdapter\CurlHttpAdapter;
 use Geocoder\Provider\OpenStreetMapProvider;
+use Input;
+use Response;
 
-class Utility extends \Controller
+class Utility extends Controller
 {
 
-    public function postLookupProvince() {
-        $long = \Input::get('long');
-        $lat  = \Input::get('lat');
+    public function postLookupProvince()
+    {
+        $long = Input::get('long');
+        $lat = Input::get('lat');
 
-        $adapter  = new CurlHttpAdapter();
+        $adapter = new CurlHttpAdapter();
         $provider = new OpenStreetMapProvider($adapter);
 
         $geocoder = new Geocoder($provider);
@@ -22,7 +26,7 @@ class Utility extends \Controller
         $result = $geocoder->reverse($lat, $long);
 
         if ($result->getCountry() == 'Philippines') {
-            return \Response::json([
+            return Response::json([
                 'status' => 'ok',
                 'data'   => [
                     'province' => $result->getRegion()
@@ -30,7 +34,7 @@ class Utility extends \Controller
             ]);
         }
 
-        return \Response::json([
+        return Response::json([
             'status' => 'error'
         ]);
     }

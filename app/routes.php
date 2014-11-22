@@ -15,8 +15,12 @@ Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::group(['prefix' => '/'], function() {
-    Route::get('test', function() {
-        return Coreproc\Procex\Model\Organization::where('org_id','=', '31639')->limit(5)->get();
+    Route::get('testquery', function() {
+        return Coreproc\Procex\Model\Organization::on('pgsql')->where('org_id','=', '31639')->limit(5)->get();
+    });
+
+    Route::group(['prefix' => 'api'] , function() {
+        Route::controller('search', 'Coreproc\Procex\Controller\Api\Search');
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');

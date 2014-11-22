@@ -175,8 +175,6 @@ class Search extends \Controller
             $year = '2009';
         }
 
-        $categories = $categories->categories;
-
         if ( ! empty($categories)) {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);

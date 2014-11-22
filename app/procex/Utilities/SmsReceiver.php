@@ -84,7 +84,7 @@ class SmsReceiver
     public function composeSearchMessage($keywords)
     {
         $action = $keywords[2];
-        $query = $keywords[3];
+        $query = ucwords($keywords[3]);
         $year = isset($keywords[4]) ? $keywords[4] : date('Y');
         $message = 'ERROR: Please contact support.';
         $data = null;
@@ -200,6 +200,8 @@ class SmsReceiver
         $data = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
             $q->whereLocation($province);
         })->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+        $province = ucwords($province);
 
         $total_spent_amount =
             Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {

@@ -5,7 +5,12 @@ namespace Coreproc\Procex\Utilities;
 use Config;
 use Coreproc\Globe\Labs\Api\Classes\Sms;
 use Coreproc\Globe\Labs\GlobeLabs;
+use Coreproc\Procex\Model\Award;
+use Coreproc\Procex\Model\BidInformation;
 use Coreproc\Procex\Model\Subscriber;
+use Geocoder\Geocoder;
+use Geocoder\HttpAdapter\CurlHttpAdapter;
+use Geocoder\Provider\OpenStreetMapProvider;
 use Lang;
 use Log;
 
@@ -26,6 +31,7 @@ class SmsReceiver
         $subscriber = Subscriber::where('subscriber_number', '=', $subscriberNumber)->first();
         if (empty($subscriber)) {
             Log::error("Did not find subscriber with mobile number: {$subscriberNumber}");
+
             return;
         }
 
@@ -51,21 +57,93 @@ class SmsReceiver
         switch ($keywords[1]) {
             case 'help':
                 // send help message
-                $this->sendHelpMessage();
+                $this->composeHelpMessage();
                 break;
             case 'inquire':
+                $this->composeInquireMessage();
                 break;
             case 'search':
+                $this->composeSearchMessage($keywords);
+
                 break;
             default:
                 break;
         }
     }
 
-    public function sendHelpMessage()
+    public function composeHelpMessage()
     {
         $message = Lang::get('procex.smsMessages.help');
 
+        $this->sendMessage($message);
+    }
+
+    /**
+     * @param $keywords
+     */
+    public function composeSearchMessage($keywords)
+    {
+        $action = $keywords[2];
+        $query = ucwords($keywords[3]);
+        $year = isset($keywords[4]) ? $keywords[4] : date('Y');
+        $message = 'ERROR: Please contact support.';
+        $data = null;
+
+        if ($year) {
+            switch ($action) {
+                case 'classification':
+                    $data = BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')
+                            ->lists('ref_id'))->sum('contract_amt');
+
+                    break;
+                case 'area':
+                    $data = BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
+                        $q->whereLocation($query);
+                    })->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
+                            $q->whereLocation($query);
+                        })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
+
+                    break;
+                case 'category':
+                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year .
+                            '-01-01T00:00:00')->lists('ref_id'))
+                            ->sum('contract_amt');
+
+                    break;
+                default;
+                    return;
+            }
+        }
+
+        if (isset($data)) {
+            $total_projects = $data->count();
+            $total_approved_projects = $data->whereTenderStatus('Awarded')->count();
+
+            $total_budget_amount = $data->sum('approved_budget');
+
+            $message = '- # Prj: ' . number_format($total_projects) . '
+- # Apprv Prj: ' . number_format($total_approved_projects) . '
+- Amt Spent: PHP ' . number_format($total_spent_amount, 2) . '
+- Bdgt: PHP ' . number_format($total_budget_amount, 2);
+        }
+
+        $this->sendMessage($message);
+    }
+
+    /**
+     * @param $message
+     */
+    private function sendMessage($message)
+    {
         $globeLabs = GlobeLabs::service(Config::get('procex.globelabs_api.appId'), Config::get('procex.globelabs_api.appSecret'));
 
         $smsService = $globeLabs->smsService();
@@ -90,4 +168,65 @@ class SmsReceiver
         }
     }
 
-} 
+    private function composeInquireMessage()
+    {
+        Log::info('Trying to get location of ' . $this->sms->sender->get());
+        // first locate the user
+        $globeLabs = GlobeLabs::service(Config::get('procex.globelabs_api.appId'), Config::get('procex.globelabs_api.appSecret'));
+
+        $locationService = $globeLabs->locationService();
+        $location = $locationService->locate($this->accessToken, $this->sms->sender->get(), 100);
+
+        if (empty($location)) {
+            Log::error('Could not get location of subscriber ' . $this->sms->sender->get());
+            return;
+        }
+
+        Log::info('Location found: ' . $location->latitude . ' ' . $location->longitude);
+
+        $adapter = new CurlHttpAdapter();
+        $provider = new OpenStreetMapProvider($adapter);
+
+        $geocoder = new Geocoder($provider);
+
+        $result = $geocoder->reverse($location->latitude, $location->longitude);
+
+        // so we should have the region
+
+        $province = $result->getRegion();
+
+        $year = date('Y');
+
+        $data = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+            $q->whereLocation($province);
+        })->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+        $province = ucwords($province);
+
+        $total_spent_amount =
+            Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+                $q->whereLocation($province);
+            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
+
+        if (isset($data)) {
+            $total_projects = $data->count();
+            $total_approved_projects = $data->whereTenderStatus('Awarded')->count();
+
+            $total_budget_amount = $data->sum('approved_budget');
+
+            $message = '- # Prj: ' . number_format($total_projects) . '
+- # Apprv Prj: ' . number_format($total_approved_projects) . '
+- Amt Spent: PHP ' . number_format($total_spent_amount,2) . '
+- Bdgt: PHP ' . number_format($total_budget_amount, 2);
+
+            Log::info('Sending message: ' . $message);
+
+            $this->sendMessage($message);
+            return;
+        }
+
+        Log::error('No message found');
+
+    }
+
+}

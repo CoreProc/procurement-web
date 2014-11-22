@@ -3,4 +3,4 @@
         .module('app.controllers', []);
 })(angular);
 
-// @prepros-append "controllers/sample.js"
+// @prepros-append "controllers/root.js"

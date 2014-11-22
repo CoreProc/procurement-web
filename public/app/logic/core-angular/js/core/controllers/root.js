@@ -3,16 +3,18 @@
     /**
      * @ngInject
      */
-    function RootCtrl($scope, $mdSidenav) {
+    function RootCtrl($scope, CategoryService, UtilityService) {
         var vm = this;
 
-        $scope.openLeftMenu = function() {
-            //$mdSidenav('asdf').toggle();
-        };
+        CategoryService
+            .getAll()
+            .then(function(response) {
+                console.log(response);
+            });
     }
 
     // inject services to each controller constructor
-    RootCtrl.$inject     = ['$scope', '$mdSidenav'];
+    RootCtrl.$inject     = ['$scope', 'CategoryService', 'UtilityService'];
 
     // register controllers to Angular
     angular

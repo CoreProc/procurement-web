@@ -10,7 +10,8 @@
         "barryvdh/laravel-ide-helper": "1.*",
         "coreproc/globelabs-api": "0.*",
         "toin0u/geotools-laravel": "0.2.*",
-        "jlapp/swaggervel": "dev-master"
+        "jlapp/swaggervel": "dev-master",
+        "ellipsesynergie/api-response": "0.7.*"
 	},
 	"autoload": {
         "psr-4": {

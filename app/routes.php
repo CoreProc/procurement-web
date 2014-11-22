@@ -25,6 +25,7 @@ Route::group(['prefix' => '/'], function() {
 
         Route::controller('categories', 'Coreproc\Procex\Controller\Api\Category');
         Route::controller('areas', 'Coreproc\Procex\Controller\Api\Area');
+        Route::controller('classifications', 'Coreproc\Procex\Controller\Api\Classification');
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');

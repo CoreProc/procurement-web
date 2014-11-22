@@ -11,15 +11,23 @@
 |
 */
 
-Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
-Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
+Blade::setContentTags('<%', '%>');        // for variables and all things Blade
+Blade::setEscapedContentTags('<%%', '%%>');    // for escaped data
 
-Route::group(['prefix' => '/'], function() {
-    Route::get('testquery', function() {
-        return Coreproc\Procex\Model\BidInformation::groupBy('tender_status')->lists('tender_status');
+Route::group(['prefix' => '/'], function () {
+    Route::get('test', function () {
+        $province = 'Abra';
+        $temp =  Coreproc\Procex\Model\BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+            $q->whereLocation($province);
+        })->lists('ref_no');
+
+        return $temp;
+
+        return Coreproc\Procex\Model\Award::whereIn('ref_id', $temp)->sum('contract_amt');
+
     });
 
-    Route::group(['prefix' => 'api'] , function() {
+    Route::group(['prefix' => 'api'], function () {
         Route::controller('search', 'Coreproc\Procex\Controller\Api\Search');
         Route::controller('utility', 'Coreproc\Procex\Controller\Api\Utility');
 

@@ -2,7 +2,7 @@
     angular
         .module('app')
         .run([
-            '$rootScope', '$mdSidenav', 'leafletBoundsHelpers',
+            '$rootScope', '$mdSidenav',
             function($rootScope, $mdSidenav) {
                 $rootScope.bounds = {
                     northEast: {
@@ -18,6 +18,26 @@
                 $rootScope.config = {
                     scrollWheelZoom: false
                 };
+
+                $rootScope.regions = [
+                    { name: "Region I"},
+                    { name: "CAR"},
+                    { name: "Region II"},
+                    { name: "Region III"},
+                    { name: "Region IV-A"},
+                    { name: "Region IV-B"},
+                    { name: "NCR"},
+                    { name: "Region V"},
+                    { name: "Region VI"},
+                    { name: "Region VII"},
+                    { name: "Region VIII"},
+                    { name: "Region IX"},
+                    { name: "Region X"},
+                    { name: "Region XI"},
+                    { name: "Region XII"},
+                    { name: "Region XIII"},
+                    { name: "ARMM"}
+                ];
 
                 $rootScope.openLeftMenu = function() {
                     $mdSidenav('asdf').toggle();

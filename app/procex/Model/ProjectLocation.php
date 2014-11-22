@@ -15,6 +15,8 @@ class ProjectLocation extends ProcurementModel
 
     protected $table = '116b0812-23b4-4a92-afcc-1030a0433108';
 
+    protected $dates = ['project_location'];
+
     public static function getTableName()
     {
         return with(new static)->getTable();

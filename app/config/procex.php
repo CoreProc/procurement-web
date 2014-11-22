@@ -20,4 +20,6 @@ return [
 
     ],
 
+    'request_limit' => 5
+
 ];

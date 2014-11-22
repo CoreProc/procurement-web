@@ -8,55 +8,83 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
+use Coreproc\Procex\Model\Award;
 use Coreproc\Procex\Model\BidInformation;
 use Coreproc\Procex\Repository\Request;
 
 class Search extends \Controller
 {
 
-    public function getQuery()
-    {
+    public function getQuery() {
         $filters = \Input::get('filters');
 
-        if ( ! empty($filters)) {
+        if (!empty($filters)) {
             $filters = join(' ', $filters);
 
             $results = new Request($filters, false, BidInformation::getTableName());
 
-            if ( ! $results->execute()) {
+            if (!$results->execute()) {
                 return \Response::api()->errorNotFound();
             }
-        } else {
-            $results = BidInformation::paginate(15);
-        }
 
-        $meta = [
-            ''
-        ];
+            $results = $results->data;
+        } else {
+
+            $results = BidInformation::paginate(\Config::get('procex.request_limit'));
+
+            $cost = null;
+
+            $temp = BidInformation::has('awards')->lists('ref_id');
+
+            $cost = Award::whereIn('ref_id', $temp)->sum('budget');
+
+            $meta = [
+                'total_budget_amount'     => BidInformation::sum('approved_budget'),
+                'total_spent_amount'      => $cost,
+                'total_projects'          => BidInformation::all()->count(),
+                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')
+
+            ];
+        }
 
         return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
-    public function getClassification($classification = null)
-    {
+    public function getItem($ref_id) {
+        $result = BidInformation::where('ref_id', '=', $ref_id)->first();
 
+        if (!empty($result)) {
+            return \Response::api()->withItem($result, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
+        }
+
+        return \Response::api()->errorNotFound();
     }
 
-    public function getAreas($area = null)
-    {
+    public function getFromLocation($province) {
 
-    }
+        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+            $q->whereLocation($province);
+        });
 
-    public function getCategories($category = null)
-    {
+       //  $temp = $results;
 
-    }
+       // $yay = $temp->lists('ref_no');
 
-    public function getFromLocation($long, $lat)
-    {
-        $long = \Input::get('long');
-        $lat = \Input::get('lat');
+        $meta = [
+            'total_budget_amount'     => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->sum('approved_budget'),
+            //'total_spent_amount'      => Award::whereIn('ref_id', $yay)->sum('contract_amt'),
+            'total_projects'          => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->count(),
+            'total_approved_projects' => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->whereTenderStatus('Awarded')->count()
+        ];
 
+        return \Response::api()
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
 }

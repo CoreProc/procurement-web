@@ -10,14 +10,16 @@
             RestangularConfigurer.setBaseUrl(
                 Restangular
                     .configuration
-                    .baseUrl + '/' + serviceRoute
+                    //.baseUrl + '/api/' + serviceRoute
+                    .baseUrl
             );
         });
 
         this.getAll = function(params) {
             return restangular
-                .one('')
-                .get(params);
+                .one('api')
+                .one(serviceRoute)
+                .get();
         };
     }
 

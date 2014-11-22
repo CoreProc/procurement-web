@@ -111,11 +111,10 @@ class SmsReceiver
 
                     break;
                 case 'category':
-                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->where('publish_date', '<=', $year . '-12-31T23:59:59');
+                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
                     $total_spent_amount =
-                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year .
-                            '-01-01T00:00:00')->lists('ref_id'))
+                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))
                             ->sum('contract_amt');
 
                     break;

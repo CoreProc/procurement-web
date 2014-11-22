@@ -41,7 +41,7 @@ Route::filter('auth', function () {
     }
 });
 
-Route::filter('cached', function ($route, $request, $response, $age = 60) {
+Route::filter('cached', function ($route, $request, $response, $age = 500) {
     $response->setTtl($age);
 });
 

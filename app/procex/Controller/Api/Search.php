@@ -167,9 +167,9 @@ class Search extends \Controller
     public function postChrisMaxSpecial()
     {
         $data = \Input::json('data');
-        $province = $data->province;
-        $categories = $data->categories;
-        $year = $data->year;
+        $province = $data['province'];
+        $categories = $data['categories'];
+        $year = $data['year'];
 
         if (empty($year)) {
             $year = '2009';

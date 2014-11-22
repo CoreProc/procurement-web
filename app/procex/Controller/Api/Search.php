@@ -86,8 +86,8 @@ class Search extends \Controller
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
             $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereHas('projectLocation', function ($q) use ($areas) {
-                    $q->whereIn('location', $areas);
-                })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))
+                $q->whereIn('location', $areas);
+            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))
                 ->sum('contract_amt');
 
         } elseif (empty($areas) && !empty($classification) && empty($categories)) {
@@ -161,4 +161,31 @@ class Search extends \Controller
             ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
+    public function postChrisMaxSpecial() {
+        $province   = \Input::json('province');
+        $categories = \Input::json('categories');
+        $year       = \Input::json('year');
+
+        if (empty($year)) {
+            $year = '2009';
+        }
+
+        $categories = $categories->categories;
+
+        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+            $q->whereLocation($province);
+        })->whereIn('business_category', $categories);
+
+        $meta = [
+            'total_budget_amount'     => $results->sum('approved_budget'),
+            'total_spent_amount'      => Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+                $q->whereLocation($province);
+            })->lists('ref_id'))->sum('contract_amt'),
+            'total_projects'          => $results->count(),
+            'total_approved_projects' => $results->whereTenderStatus('Awarded')->count()
+        ];
+
+        return \Response::api()
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
+    }
 }

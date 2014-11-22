@@ -14,29 +14,46 @@
 	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <% HTML::style('assets/css/normalize.css') %>
-        <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
-        <% HTML::style('assets/js/vendor/slideshow/css/demo.css') %>
-        <% HTML::style('assets/js/vendor/slideshow/css/style2.css') %>
-        <% HTML::style('assets/css/main.css') %>
-        <% HTML::script('assets/js/vendor/slideshow/js/modernizr.custom.86080.js') %>
-
-        <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
+    <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
+    <% HTML::style('assets/css/slideshow/css/style2.css') %>
+    <% HTML::style('assets/css/main.css') %>
+    <% HTML::script('assets/js/modernizr.custom.86080.js') %>
+    <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
 </head>
 <body>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<header>
+    <ul class="cb-slideshow">
+        <li><span>Image 01</span></li>
+        <li><span>Image 02</span></li>
+        <li><span>Image 03</span></li>
+        <li><span>Image 04</span></li>
+        <li><span>Image 05</span></li>
+    </ul>
 
-<ul class="cb-slideshow">
-    <li><span>Image 01</span></li>
-    <li><span>Image 02</span></li>
-    <li><span>Image 03</span></li>
-    <li><span>Image 04</span></li>
-    <li><span>Image 05</span></li>
-</ul>
-
-<div class="wrapper">
+    <div class="wrapper">
+        <div class="row content-row">
+            <div class="large-12 columns">
+                <h1 class="title">
+                    <span class="blue">Proc</span><span class="red">Ex</span>
+                </h1>
+                <div class="caption">Procurement Explorer</div>
+                <div class="map-marker"><i class="fa fa-map-marker"></i></div>
+                <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
+                <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+                <div class="social">
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="clearfix"></div>
+<div class="wrapper-2">
     <div class="row content-row">
         <div class="large-12 columns">
             <h1 class="title">
@@ -52,18 +69,24 @@
             </div>
         </div>
     </div>
-
 </div>
 
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<% HTML::script('assets/js/plugins.js') %>
-<% HTML::script('assets/js/main.js') %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
 <script>
+$(document).ready(function() {
+    function setHeight() {
+        windowHeight = $(window).innerHeight();
+        $('header, .wrapper, .wrapper .content-row, .content-row .large-12').css('min-height', windowHeight);
+    };
+    setHeight();
+
+    $(window).resize(function() {
+        setHeight();
+    });
+});
+
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -71,7 +94,6 @@
 
  ga('create', 'UA-57001888-1', 'auto');
  ga('send', 'pageview');
-
 </script>
 </body>
 </html>

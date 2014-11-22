@@ -8,7 +8,7 @@
 </head>
 <body layout="row" layout-fill ng-controller="RootCtrl as ctrl">
 
-<button ng-click="filtersOpen = !filtersOpen" ng-style="{ 'left': ((filtersOpen ? 365 : 0) + 8) + 'px', 'color': filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: fixed; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
+<button ng-click="filtersOpen = !filtersOpen" ng-style="{ 'left': ((filtersOpen ? 365 : 0) + 32) + 'px', 'color': filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: fixed; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
 
 <div layout-fill class="overlay resultsOverlay" style="padding-top: 56px">
     <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
@@ -87,7 +87,7 @@
 
 <md-content layout="vertical" layout-fill>
     <main flex>
-        <leaflet height="100%" maxbounds="bounds" defaults="config"></leaflet>
+        <leaflet height="100%" maxbounds="bounds" center="center" markers="markers" event-broadcast="true"></leaflet>
     </main>
 </md-content>
 

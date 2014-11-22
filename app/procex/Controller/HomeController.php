@@ -26,7 +26,7 @@ class HomeController extends BaseController {
     
     public function explore()
     {
-		return \View::make('procex.explore');
+		$this->layout = \View::make('procex.explore');
     }
 
 	public function landing()

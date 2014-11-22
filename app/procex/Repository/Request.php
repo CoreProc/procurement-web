@@ -42,7 +42,13 @@ class Request
             ]);
 
             if ($response->getStatusCode() == '200') {
-                $this->data = json_decode($response->getBody())[2]->records;
+                $temp = json_decode($response->getBody());
+
+                if($temp->success) {
+                    $this->data = $temp->result->records;
+                } else {
+                    $this->errors = $temp->error->query;
+                }
 
                 return true;
             } else {

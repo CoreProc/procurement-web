@@ -10,32 +10,42 @@
                     console.log(str);
                 };
 
-                $rootScope.bounds = {
-                    northEast: {
-                        lat: 21.332189,
-                        lng: 126.1616331
+                $rootScope.mapConfig = {
+                    bounds: {
+                        northEast: {
+                            lat: 25.332189,
+                            lng: 136.1616331
+                        },
+                        southWest: {
+                            lat: 0.751745,
+                            lng: 105.525891
+                        }
                     },
-                    southWest: {
-                        lat: 4.751745,
-                        lng: 115.525891
+                    defaults: {
+                        scrollWheelZoom: true
+                    },
+                    center: { lat: 0, lng: 0, zoom: 5 },
+                    markers: {
+                        center: {
+                            lat: 12.640338306846802,
+                            lng: 120.84960937499999,
+                            message: '0 projects in here',
+                            focus: true,
+                            draggable: false
+                        }
+                    },
+                    events: {
+                        map: {
+                            enable: ['moveend'],
+                            logic: 'emit'
+                        }
                     }
                 };
 
-                $rootScope.config = {
-                    scrollWheelZoom: true
-                };
-
-                $rootScope.markers = {
-                    center: {
-                        lat: 12.640338306846802,
-                        lng: 120.84960937499999,
-                        message: '0 projects in here',
-                        focus: true,
-                        draggable: true
-                    }
-                };
-
-                $rootScope.center = { lat: 0, lng: 0, zoom: 5 };
+                $rootScope.$on('leafletDirectiveMap.moveend', function(e, d) {
+                    $rootScope.mapConfig.markers.center['lat'] = e.targetScope.center['lat'];
+                    $rootScope.mapConfig.markers.center['lng'] = e.targetScope.center['lng'];
+                });
 
                 $rootScope.regions = [
                     { "name": "ARMM", "provinces": [

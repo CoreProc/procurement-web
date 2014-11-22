@@ -87,7 +87,7 @@
 
 <md-content layout="vertical" layout-fill>
     <main flex>
-        <leaflet height="100%" maxbounds="bounds" center="center" markers="markers" event-broadcast="true"></leaflet>
+        <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers" event-broadcast="mapConfig.events"></leaflet>
     </main>
 </md-content>
 

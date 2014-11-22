@@ -1,6 +1,7 @@
 (function(angular) {
     angular
-        .module('app.services', []);
+        .module('app.services', [])
+    ;
 })(angular);
 
 // @prepros-append "services/utility.js"

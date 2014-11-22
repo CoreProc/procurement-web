@@ -1,67 +1,76 @@
 <!DOCTYPE html>
-<html ng-app="app" id="overlay" ng-style="{ 'overflow-y': $media('xs') ? '' }">
+<html ng-app="app" id="overlay">
 <head>
     <meta charset="UTF-8">
     <title>Home | ProcEx - PROCurement EXplorer</title>
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
-<body layout="column" layout-fill ng-controller="RootCtrl">
+<body layout="row" layout-fill ng-controller="RootCtrl">
 
 <div layout-fill class="overlay resultsOverlay">
     <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
-    <md-card ng-repeat="card in cardTest" class="card md-default-theme">
-        <button class="close">&times;</button>
-        <h3 ng-bind="card.name"></h3>
-        <h4 ng-bind="card.budget"></h4>
-    </md-card>
+
+    <div class="panel panel-bidList">
+        <select>
+            <option>adfasdfasdf1</option>
+            <option>adfasdfasdf2</option>
+            <option>adfasdfasdf3</option>
+            <option>adfasdfasdf4</option>
+            <option>adfasdfasdf5</option>
+        </select>
+    </div>
+    <div class="panel panel-searchResults">
+        <md-card ng-repeat="card in cardTest" class="card md-default-theme">
+
+            <!-- <button class="close">&times;</button> -->
+
+            <h3 ng-bind="card.name"></h3>
+            <h4 ng-bind="card.budget"></h4>
+        </md-card>
+    </div>
 </div>
 
-<md-content layout="column" layout-fill>
+<md-content layout="vertical" layout-fill>
     <main flex>
         <leaflet height="100%" maxbounds="bounds" defaults="config"></leaflet>
     </main>
 </md-content>
 
-<md-sidenav style="width: 500px" is-locked-open="true" component-id="regions">
-    <md-toolbar>
-        <h2 class="md-toolbar-tools">
-            <span>Filters</span>
-        </h2>
-    </md-toolbar>
-    <md-content flex class="sidebar sidebar-regions">
-        <md-tabs selected="0">
-            <md-tab label="Area">
-                <div layout="row">
-                    <md-content flex>
-                        <section ng-repeat="region in regions">
-                            <md-subheader class="md-primary">{{ region.name }}</md-subheader>
-                            <md-button class="list-item" ng-repeat="province in region.provinces">{{ province }}</md-button>
-                        </section>
-                    </md-content>
-                </div>
-            </md-tab>
-            <md-tab label="Category">
-                Cate
-            </md-tab>
-            <md-tab label="Classifications">
-                Doge
-            </md-tab>
-        </md-tabs>
-    </md-content>
+<md-sidenav style="width: 500px" is-locked-open="true" component-id="regions" style="height: 100%" layout-fill>
+    <div layout="vertical" layout-fill style="height: 100%">
+        <md-toolbar class="md-grey-theme">
+            <div class="md-toolbar-tools">
+                <span>Filters</span>
+            </div>
+        </md-toolbar>
+        <div flex style="height: 100%">
+            <div layout-fill style="height: 100%">
+                <md-content layout-fill scroll-y class="sidebar sidebar-regions" style="height: 100%">
+                    <md-tabs noink="true" nobar="true" selected="0" class="md-grey-theme">
+                        <md-tab label="Area">
+                            <div layout="row">
+                                <md-content flex>
+                                    <section ng-repeat="region in regions" layout="vertical">
+                                        <md-subheader>{{ region.name }}</md-subheader>
+                                        <md-button class="list-item" ng-repeat="province in region.provinces" md-selected="province.selected" ng-click="province.selected = !province.selected">{{ province.name }}</md-button>
+                                    </section>
+                                </md-content>
+                            </div>
+                        </md-tab>
+                        <md-tab label="Category">
+                            Cate
+                        </md-tab>
+                        <md-tab label="Classifications">
+                            Doge
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+        </div>
+    </div>
 </md-sidenav>
-
-<!--
-<aside flex-sm="33" flex-md="20">
-    Menu<br>
-    [flex-sm="33"][flex-md="20"]
-</aside>
-
-<aside flex-sm="33" flex-md="20">
-    Menu<br>
-    [flex-sm="33"][flex-md="20"]
-</aside>
--->
+</div>
 <script src="<% asset('script.min.js') %>"></script>
 </body>
 </html>

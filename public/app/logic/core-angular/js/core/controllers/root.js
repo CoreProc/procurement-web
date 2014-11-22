@@ -3,7 +3,7 @@
     /**
      * @ngInject
      */
-    function RootCtrl($scope, CategoryService, UtilityService) {
+    function RootCtrl($scope, CategoryService, UtilityService, $mdBottomSheet) {
         var vm = this;
 
         CategoryService
@@ -14,7 +14,7 @@
     }
 
     // inject services to each controller constructor
-    RootCtrl.$inject     = ['$scope', 'CategoryService', 'UtilityService'];
+    RootCtrl.$inject     = ['$scope', 'CategoryService', 'UtilityService', '$mdBottomSheet'];
 
     // register controllers to Angular
     angular

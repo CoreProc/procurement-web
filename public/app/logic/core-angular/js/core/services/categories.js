@@ -8,9 +8,12 @@
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
+                /*
                 Restangular
                     .configuration
                     .baseUrl + '/' + serviceRoute
+                    */
+                'http://localhost/procurement-web/public/api/' + serviceRoute
             );
         });
 

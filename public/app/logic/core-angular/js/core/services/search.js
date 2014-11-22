@@ -3,30 +3,29 @@
     /**
      * @ngInject
      */
-    function CategoryService(Restangular) {
-        var serviceRoute = 'categories';
+    function SearchService(Restangular) {
+        var serviceRoute = 'search';
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
-                'https://procex.coreproc.ph'
-                //'https://procex.dev'
+                'https://procex.coreproc.ph/api/' + serviceRoute
+                //'https://procex.dev/api'
             );
         });
 
-        this.getAll = function(params) {
+        this.query = function(params) {
             return restangular
-                .one('api')
-                .one(serviceRoute)
-                .get();
+                .one('query')
+                .get(params);
         };
     }
 
     // inject services to each controller constructor
-    CategoryService.$inject     = ['Restangular'];
+    SearchService.$inject     = ['Restangular'];
 
     // register controllers to Angular
     angular
         .module('app.services')
-        .service('CategoryService', CategoryService);
+        .service('SearchService', SearchService);
 
 })(angular);

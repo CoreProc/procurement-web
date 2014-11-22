@@ -29,7 +29,13 @@ class GlobeLabsController extends BaseController
             App::abort(400);
         }
 
-        $subscriber = new Subscriber;
+        $subscriber = Subscriber::where('subscriber_number', '=', $data['subscriberNumber'])
+            ->first();
+
+        if (empty($subscriber)) {
+            $subscriber = new Subscriber;
+        }
+
         $subscriber->access_token = $data['accessToken'];
         $subscriber->subscriber_number = $data['subscriberNumber'];
 

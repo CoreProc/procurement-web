@@ -5,6 +5,7 @@ namespace Coreproc\Procex\Utilities;
 use Config;
 use Coreproc\Globe\Labs\Api\Classes\Sms;
 use Coreproc\Globe\Labs\GlobeLabs;
+use Coreproc\Procex\Model\Award;
 use Coreproc\Procex\Model\BidInformation;
 use Coreproc\Procex\Model\Subscriber;
 use Lang;
@@ -74,36 +75,61 @@ class SmsReceiver
      * @param $keywords
      */
     public function composeSearchMessage($keywords) {
-        $action = $keywords[2];
-        $query  = $keywords[3];
-        $year   = isset($keywords[4]) ? $keywords[4] : date('Y');
+        $action  = $keywords[2];
+        $query   = $keywords[3];
+        $year    = isset($keywords[4]) ? $keywords[4] : date('Y');
+        $message = 'ERROR: Please contact support.';
+        $data    = null;
 
-        if($year)
+        if ($year) {
+            switch ($action) {
+                case 'classification':
+                    $data = BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-        switch($action) {
-            case 'classification':
-                $data = BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year .'-01-01T00:00:00');
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')
+                            ->lists('ref_id'))->sum('contract_amt');
 
-                $total_projects = $data->count();
-                $total_approved_projects = $data->whereTenderStatus('Awarded')->count();
+                    break;
+                case 'area':
+                    $data = BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
+                        $q->whereLocation($query);
+                    })->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-                $total_budget_amount = $data->sum('approved_budget');
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
+                            $q->whereLocation($query);
+                        })->where('publish_date', '>=', $year . '-01-01T00:00:00'))->sum('contract_amt');
+
+                    break;
+                case 'category':
+                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
+
+                    $total_spent_amount =
+                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year .
+                                                                                                                                      '-01-01T00:00:00'))
+                            ->sum('contract_amt');
 
 
-                break;
-            case 'area':
-
-
-                break;
-            case 'category':
-
-
-                break;
-            default;
-                return;
+                    break;
+                default;
+                    return;
+            }
         }
 
-        $this->sendMessage('');
+        if (isset($data)) {
+            $total_projects          = $data->count();
+            $total_approved_projects = $data->whereTenderStatus('Awarded')->count();
+
+            $total_budget_amount = $data->sum('approved_budget');
+
+            $message = '- # Prj: ' . $total_projects . '
+- # Apprv Prj: ' . $total_approved_projects . '
+- Amt Spent: ' . $total_spent_amount . '
+- Bdgt: ' . $total_budget_amount;
+        }
+
+        $this->sendMessage($message);
     }
 
     /**

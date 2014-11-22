@@ -74,7 +74,7 @@ class SmsReceiver
         $mobileNumber = $this->sms->sender->get();
         $shortCode = Config::get('procex.globelabs_api.shortCode');
 
-        Log::info("Access Token: {$accessToken}, Mobile Number: {$mobileNumber}, Short Code: {$shortCode}");
+        Log::info("Access Token: {$accessToken}, Mobile Number: {$mobileNumber}, Short Code: {$shortCode}, Message: {$message}");
 
         // we try to get the access token.....
         $smsService->setAccessToken($accessToken);

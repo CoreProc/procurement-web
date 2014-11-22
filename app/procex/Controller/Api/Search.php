@@ -10,7 +10,6 @@ namespace Coreproc\Procex\Controller\Api;
 
 use Coreproc\Procex\Model\Award;
 use Coreproc\Procex\Model\BidInformation;
-use Coreproc\Procex\Repository\Request;
 
 class Search extends \Controller
 {

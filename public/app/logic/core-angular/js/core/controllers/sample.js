@@ -3,16 +3,21 @@
     /**
      * @ngInject
      */
-    function SampleCtrl($scope, $stateParams) {
+    function RootCtrl($scope, $mdSidenav) {
         var vm = this;
+
+        $scope.openLeftMenu = function() {
+
+            //$mdSidenav('asdf').toggle();
+        };
     }
 
     // inject services to each controller constructor
-    SampleCtrl.$inject     = ['$scope', '$stateParams'];
+    RootCtrl.$inject     = ['$scope', '$mdSidenav'];
 
     // register controllers to Angular
     angular
         .module('app.controllers')
-        .controller('SampleCtrl', SampleCtrl);
+        .controller('RootCtrl', RootCtrl);
 
 })(angular);

@@ -29,20 +29,17 @@ class Search extends \Controller
 
             $results = $results->data;
         } else {
-
             $results = BidInformation::paginate(\Config::get('procex.request_limit'));
 
-            $cost = null;
+            $temp = BidInformation::whereTenderStatus('Awarded')->lists('ref_no');
 
-            $temp = BidInformation::has('awards')->lists('ref_id');
-
-            $cost = Award::whereIn('ref_id', $temp)->sum('budget');
+            $cost = Award::whereIn('ref_id', $temp)->sum('contract_amt');
 
             $meta = [
                 'total_budget_amount'     => BidInformation::sum('approved_budget'),
                 'total_spent_amount'      => $cost,
                 'total_projects'          => BidInformation::all()->count(),
-                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')
+                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')->count()
 
             ];
         }
@@ -66,21 +63,13 @@ class Search extends \Controller
             $q->whereLocation($province);
         });
 
-       //  $temp = $results;
-
-       // $yay = $temp->lists('ref_no');
-
         $meta = [
-            'total_budget_amount'     => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+            'total_budget_amount'     => $results->sum('approved_budget'),
+            'total_spent_amount'      => Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province) {
                 $q->whereLocation($province);
-            })->sum('approved_budget'),
-            //'total_spent_amount'      => Award::whereIn('ref_id', $yay)->sum('contract_amt'),
-            'total_projects'          => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
-                $q->whereLocation($province);
-            })->count(),
-            'total_approved_projects' => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
-                $q->whereLocation($province);
-            })->whereTenderStatus('Awarded')->count()
+            })->lists('ref_id'))->sum('contract_amt'),
+            'total_projects'          => $results->count(),
+            'total_approved_projects' => $results->whereTenderStatus('Awarded')->count()
         ];
 
         return \Response::api()

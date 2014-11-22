@@ -28,5 +28,10 @@ class HomeController extends BaseController {
     {
         $org = Organization::limit(5)->get();
     }
+    
+    public function explore()
+    {
+		return \View::make('hello');
+    }
 
 }

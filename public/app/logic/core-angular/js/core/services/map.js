@@ -8,13 +8,12 @@
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
-                Restangular
-                    .configuration
-                    //.baseUrl + '/api/' + serviceRoute
-                    .baseUrl
+                'https://procex.coreproc.ph/api'
+                //'https://procex.dev/api'
             );
         });
 
+        /*
         this.getProvinces = function() {
             return restangular
                 .one('data')
@@ -28,6 +27,13 @@
                 .one('regions')
                 .get();
         };
+        */
+
+        this.getProvince = function(params) {
+            return restangular
+                .all('lookup-province')
+                .post(params);
+        }
     }
 
     // inject services to each controller constructor

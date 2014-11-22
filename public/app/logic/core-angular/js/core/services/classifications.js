@@ -3,8 +3,8 @@
     /**
      * @ngInject
      */
-    function CategoryService(Restangular) {
-        var serviceRoute = 'categories';
+    function ClassificationService(Restangular) {
+        var serviceRoute = 'classifications';
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
@@ -22,11 +22,11 @@
     }
 
     // inject services to each controller constructor
-    CategoryService.$inject     = ['Restangular'];
+    ClassificationService.$inject     = ['Restangular'];
 
     // register controllers to Angular
     angular
         .module('app.services')
-        .service('CategoryService', CategoryService);
+        .service('ClassificationService', ClassificationService);
 
 })(angular);

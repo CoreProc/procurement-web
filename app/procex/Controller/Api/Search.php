@@ -168,17 +168,17 @@ class Search extends \Controller
     {
         $data = \Input::json('data');
         $province = $data['province'];
-        $categories = (! empty($data['categories'])) ? $data['categories'] : null;
-        $year = (! empty($data['year'])) ? $data['year'] : null;
+        $category = ( ! empty($data['categories'])) ? $data['categories'] : null;
+        $year = ( ! empty($data['year'])) ? $data['year'] : null;
 
         if (empty($year)) {
             $year = '2009';
         }
 
-        if ( ! empty($categories)) {
+        if ( ! empty($category)) {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->whereIn('business_category', $categories)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
+            })->where('business_category', '=', $category);
         } else {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');

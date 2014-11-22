@@ -8,7 +8,7 @@
 
         var restangular = Restangular.withConfig(function(RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(
-                'https://procex.coreproc.ph/api' + serviceRoute
+                'https://procex.coreproc.ph/api/' + serviceRoute
                 //'https://procex.dev/api'
             );
         });

@@ -9,26 +9,116 @@
 ProcEx API base url is **/api**
  
 ### GET /search
-* (string) **resource_id**
-* (array[string]) **filters[]**
 
-### GET /bid-information
+Base URL for search
+
+#### GET {item}
+
+Fetch a specific bid item.
+
+https://procex.coreproc.ph/api/search/item/816783
+
+#### GET query
+
+Fetch a collection of bid items from specific parameters
+
+* **classifications[]** - array[string] 
+* **areas[]** - array[string] 
+* **categories[]** - array[string] 
+* **year** - string (optional)
+
+https://procex.coreproc.ph/api/search/query?areas[]=Abra&areas[]=Metro Manila&year=2006
+
+#### GET from-location
+
+Fetch collection of bid items from province
+
+* **province** - string
+* **year** - string (optional) 
+
+https://procex.coreproc.ph/api/search/from-location?province=Abra&year=2009
 
 ### GET /areas
 
+Fetch list of Areas
+
 ### GET /classifications
+
+Fetch list of Classifications
 
 ### GET /categories
 
+Fetch list of Categories
+
 ### GET /notice-types
+
+Fetch list of Notice Types
 
 ### GET /utility
 
-#### GET lookup-province/   
+Base URL for utilities
+
+#### POST lookup-province
+
+Lookup your province based on lat-long data
+
+* string **lat**
+* string **long**
 
 ## SMS
 
-Access the ProcEx API from your GSM phone by texting the keyword INFO to [ApplicationShortNumber] and replying YES.
+Access the ProcEx API from your GSM phone by texting the keyword INFO to **21589393** and replying YES.
+
+### Keywords
+
+All keywords are prefixed with the string **PROCEX**
+
+#### HELP
+
+Get quick help on keywords and stuff.
+
+#### INQUIRE
+
+Inquire about the summary of information on bids at your location
+ 
+```
+PROCEX INQUIRE
+```
+
+#### SEARCH
+
+Get a summary of bids using specialty keywords and filters
+
+* CLASSIFICATION
+
+Get the complete list of classification names [here](https://procex.coreproc.ph/api/classifications)
+
+PROCEX SEARCH CLASSIFICATION <NAME> <YEAR [optional]> 
+
+```
+PROCEX SEARCH CLASSIFICATION GOODS 2009
+```
+
+* AREA
+
+Get the complete list of areas [here](https://procex.coreproc.ph/api/areas)
+
+PROCEX SEARCH AREA <NAME> <YEAR [optional]>
+
+```
+PROCEX SEARCH AREA CAVITE 2003
+```
+
+* CATEGORY
+
+Get the complete list of category names [here](https://procex.coreproc.ph/api/categories)
+
+PROCEX SEARCH CATEGORY <NAME> <YEAR [optional]>
+
+```
+PROCEX SEARCH CATEGORY AGRICULTURE 
+```
+
 
 ### License
 

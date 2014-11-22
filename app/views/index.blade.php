@@ -37,13 +37,16 @@
     <div class="wrapper">
         <div class="row content-row">
             <div class="large-12 columns">
-                <h1 class="title">
-                    <span class="blue">Proc</span><span class="red">Ex</span>
-                </h1>
-                <div class="caption">Procurement Explorer</div>
-                <div class="map-marker"><i class="fa fa-map-marker"></i></div>
-                <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
-                <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+                <div class="get-started-container">
+                    <h1 class="title">
+                        <span class="blue">Proc</span><span class="red">Ex</span>
+                    </h1>
+                    <div class="caption">Procurement Explorer</div>
+                    <div class="map-marker"><i class="fa fa-map-marker"></i></div>
+                    <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
+                    <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+                </div>
+                
                 <div class="social">
                     <i class="fa fa-facebook"></i>
                     <i class="fa fa-twitter"></i>
@@ -52,40 +55,9 @@
         </div>
     </div>
 </header>
-<div class="clearfix"></div>
-<div class="wrapper-2">
-    <div class="row content-row">
-        <div class="large-12 columns">
-            <h1 class="title">
-                <span class="blue">Proc</span><span class="red">Ex</span>
-            </h1>
-            <div class="caption">Procurement Explorer</div>
-            <div class="map-marker"><i class="fa fa-map-marker"></i></div>
-            <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
-            <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
-            <div class="social">
-                <i class="fa fa-facebook"></i>
-                <i class="fa fa-twitter"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-$(document).ready(function() {
-    function setHeight() {
-        windowHeight = $(window).innerHeight();
-        $('header, .wrapper, .wrapper .content-row, .content-row .large-12').css('min-height', windowHeight);
-    };
-    setHeight();
-
-    $(window).resize(function() {
-        setHeight();
-    });
-});
 
  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

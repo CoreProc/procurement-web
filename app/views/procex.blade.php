@@ -57,7 +57,7 @@
                                 <md-content flex>
                                     <section ng-repeat="region in regions" layout="vertical">
                                         <md-subheader>{{ region.name }}</md-subheader>
-                                        <md-button class="list-item" ng-repeat="province in region.provinces" md-selected="province.selected" ng-click="province.selected = !province.selected">{{ province.name }}</md-button>
+                                        <md-button class="list-item" ng-repeat="province in region.provinces" ng-class="{ 'focus': province.selected }" ng-click="province.selected = !province.selected">{{ province.name }}</md-button>
                                     </section>
                                 </md-content>
                             </div>

@@ -156,8 +156,9 @@ header {
 }
 .wrapper .fa-map-marker {
     font-size: 60px;
-    margin-top: 15px;
     color: #e85f5f;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .copyright {
     color: #fff;
@@ -168,6 +169,12 @@ header {
 .button-container {
     text-align: center;
     margin-top: 15px;
+}
+.get-started-btn {
+    float: right;
+}
+.services-btn {
+    float: left;
 }
 
 .social i {
@@ -201,13 +208,25 @@ header {
     }
     .social {
         text-align: center;
-        margin-top: 30px;
+        margin-top: 20px;
     }
     .copyright {
         margin-top: 0;
     }
-    .button-container a {
-        padding: 12px 27px 13px 27px!important;
+    .button-container-1,
+    .button-container-2 {
+        width: 100%;
+        text-align: center;
+    }
+    .button-container-1 a {
+        margin-bottom: 15px;
+    }
+    .button-container-1 a,
+    .button-container-2 a {
+        width: 150px;
+        padding: 12px 0 13px 0!important;
+        float: none;
+        text-align: center;
     }
 }
 

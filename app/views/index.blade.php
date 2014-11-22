@@ -42,9 +42,16 @@
                         <span class="blue">Proc</span><span class="red">Ex</span>
                     </h1>
                     <div class="caption">Procurement Explorer</div>
+
                     <div class="map-marker"><i class="fa fa-map-marker"></i></div>
-                    <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
+
+                    <div class="row">
+                        <div class="small-6 columns button-container-1"><a href="#" class="button large success get-started-btn">Get Started</a></div>
+                        <div class="small-6 columns button-container-2"><a href="#" class="button large success services-btn">Our services</a></div>
+                    </div>
+
                     <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+
                     <div class="social">
                         <i class="fa fa-facebook"></i>
                         <i class="fa fa-twitter"></i>

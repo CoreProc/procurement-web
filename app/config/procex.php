@@ -16,6 +16,8 @@ return [
 
         'appSecret' => '',
 
+        'shortCode' => '',
+
     ],
 
 ];

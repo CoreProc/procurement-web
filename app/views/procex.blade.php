@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" id="overlay">
 <head>
     <meta charset="UTF-8">
-    <title>Hello world</title>
+    <title>Home | ProcEx - PROCurement EXplorer</title>
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
 <body layout="column" layout-fill>
 
-<md-sidenav component-id="asdf" class="md-sidenav-left">
-    Left Nav!
-</md-sidenav>
+<div class="overlay resultsOverlay">
+    <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2>
+    <md-card ng-repeat="card in cardTest" class="card md-default-theme">
+        <button class="close">&times;</button>
+        <h3 ng-bind="card.name"></h3>
+        <h4 ng-bind="card.budget"></h4>
+    </md-card>
+</div>
 
 <md-content layout="column" layout-fill>
     <main flex>
@@ -18,14 +23,31 @@
     </main>
 </md-content>
 
-<md-sidenav is-locked-open="true" component-id="regions">
+<md-sidenav style="width: 500px" is-locked-open="true" component-id="regions">
     <md-toolbar>
         <h2 class="md-toolbar-tools">
-            <span>Regions</span>
+            <span>Filters</span>
         </h2>
     </md-toolbar>
     <md-content flex class="sidebar sidebar-regions">
-        <md-button class="list-item" ng-repeat="region in regions">{{region.name}}</md-button>
+        <md-tabs selected="0">
+            <md-tab label="Area">
+                <div layout="row">
+                    <md-content flex>
+                        <section ng-repeat="region in regions">
+                            <md-subheader class="md-primary">{{ region.name }}</md-subheader>
+                            <md-button class="list-item" ng-repeat="province in region.provinces">{{ province }}</md-button>
+                        </section>
+                    </md-content>
+                </div>
+            </md-tab>
+            <md-tab label="Category">
+                Cate
+            </md-tab>
+            <md-tab label="Classifications">
+                Doge
+            </md-tab>
+        </md-tabs>
     </md-content>
 </md-sidenav>
 

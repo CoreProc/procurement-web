@@ -19,14 +19,14 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return \View::make('hello');
-	}
-
     public function index()
     {
-        $org = Organization::has('bidInformations')->get();
+        $this->layout = \View::make('index');
     }
+
+	public function landing()
+	{
+		$this->layout = \View::make('landing');
+	}
 
 }

@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'Coreproc\Procex\Controller\HomeController@index');
+Route::get('landing', 'HomeController@landing');

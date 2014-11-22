@@ -3,9 +3,11 @@
 namespace Coreproc\Procex\Controller\Web;
 
 use App;
+use Coreproc\Globe\Labs\Api\Services\SmsService;
 use Coreproc\Procex\Controller\BaseController;
 use Coreproc\Procex\Model\Subscriber;
 use Input;
+use Log;
 use Validator;
 
 class GlobeLabsController extends BaseController
@@ -29,11 +31,25 @@ class GlobeLabsController extends BaseController
             App::abort(400);
         }
 
-        $subscriber = new Subscriber;
+        $subscriber = Subscriber::where('subscriber_number', '=', $data['subscriberNumber'])
+            ->first();
+
+        if (empty($subscriber)) {
+            $subscriber = new Subscriber;
+        }
+
         $subscriber->access_token = $data['accessToken'];
         $subscriber->subscriber_number = $data['subscriberNumber'];
 
         $subscriber->save();
+    }
+
+    public function postIncomingSms()
+    {
+        Log::info('Recieved SMS... trying to read');
+        $sms = SmsService::recieveSms();
+
+        Log::info("Received message {$sms->message}");
     }
 
 } 

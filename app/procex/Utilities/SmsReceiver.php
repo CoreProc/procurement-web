@@ -20,7 +20,7 @@ class SmsReceiver
     {
         $this->sms = $sms;
 
-        $subscriber = Subscriber::where('subscriber_number', '=', $sms->sender->clean($sms->sender->get()))->get();
+        $subscriber = Subscriber::where('subscriber_number', '=', $sms->sender->clean($sms->sender->get()))->first();
         if (empty($subscriber)) {
             return;
         }

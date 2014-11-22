@@ -9,8 +9,6 @@ class BidInformation extends ProcurementModel
 
     protected $table = 'baccd784-45a2-4c0c-82a6-61694cd68c9d';
 
-    protected $dates = ['publish_date', 'closing_date'];
-
     public function bidLineItems()
     {
         return $this->hasMany('Coreproc\Procex\Model\BidLineItem', 'ref_id', 'ref_id');
@@ -18,7 +16,7 @@ class BidInformation extends ProcurementModel
 
     public function awards()
     {
-        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id', 'ref_id');
+        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id');
     }
 
     public function procuringEntity()

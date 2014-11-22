@@ -66,13 +66,21 @@ class Search extends \Controller
             $q->whereLocation($province);
         });
 
-        $temp = $results;
+       //  $temp = $results;
+
+       // $yay = $temp->lists('ref_no');
 
         $meta = [
-            'total_budget_amount'     => $results->sum('approved_budget'),
-            'total_spent_amount'      => $results,
-            'total_projects'          => $results->count(),
-            'total_approved_projects' => $temp->whereTenderStatus('Awarded')->count()
+            'total_budget_amount'     => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->sum('approved_budget'),
+            //'total_spent_amount'      => Award::whereIn('ref_id', $yay)->sum('contract_amt'),
+            'total_projects'          => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->count(),
+            'total_approved_projects' => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+                $q->whereLocation($province);
+            })->whereTenderStatus('Awarded')->count()
         ];
 
         return \Response::api()

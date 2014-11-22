@@ -8,8 +8,11 @@
 </head>
 <body layout="row" layout-fill ng-controller="RootCtrl as ctrl">
 
-<div layout-fill class="overlay resultsOverlay" style="padding-top: 160px">
+<button ng-click="filtersOpen = !filtersOpen" ng-style="{ 'left': ((filtersOpen ? 365 : 0) + 32) + 'px', 'color': filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: fixed; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
+
+<div layout-fill class="overlay resultsOverlay" style="padding-top: 56px">
     <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
+    <!--
     <div class="panel panel-bidList" style="height: 48px">
         <select>
             <option>adfasdfasdf1</option>
@@ -24,8 +27,12 @@
             <md-checkbox ng-model="status" aria-label="{{ status }}">{{ status }}</md-checkbox>
         </div>
     </div>
+    -->
+    <div class="panel panel-searchInput">
+        <input type="text" ng-model="search.query" ng-disabled="cardTest.length < 3" placeholder="{{ cardTest.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
+    </div>
     <div class="panel panel-searchResults">
-        <md-card ng-repeat="card in cardTest" class="card md-default-theme">
+        <md-card ng-repeat="card in cardTest | filter: search.query" class="card md-default-theme">
 
             <!-- <button class="close">&times;</button> -->
 
@@ -35,13 +42,9 @@
     </div>
 </div>
 
-<md-content layout="vertical" layout-fill>
-    <main flex>
-        <leaflet height="100%" maxbounds="bounds" defaults="config"></leaflet>
-    </main>
-</md-content>
+</div>
 
-<md-sidenav style="width: 500px" is-locked-open="true" component-id="regions" style="height: 100%" layout-fill>
+<md-sidenav style="width: 500px" is-locked-open="filtersOpen" component-id="filters" style="height: 100%" layout-fill>
     <div layout="vertical" layout-fill style="height: 100%">
         <md-toolbar class="md-default-theme">
             <div class="md-toolbar-tools">
@@ -81,6 +84,13 @@
         </div>
     </div>
 </md-sidenav>
+
+<md-content layout="vertical" layout-fill>
+    <main flex>
+        <leaflet height="100%" maxbounds="bounds" center="center" markers="markers" event-broadcast="true"></leaflet>
+    </main>
+</md-content>
+
 </div>
 <script src="<% asset('script.min.js') %>"></script>
 </body>

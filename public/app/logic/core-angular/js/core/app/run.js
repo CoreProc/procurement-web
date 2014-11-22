@@ -4,24 +4,38 @@
         .run([
             '$rootScope', '$mdSidenav',
             function($rootScope, $mdSidenav) {
+                $rootScope.filtersOpen = false;
+
                 $rootScope.debug = function(str) {
                     console.log(str);
                 };
 
                 $rootScope.bounds = {
                     northEast: {
-                        lat: 20.332189,
-                        lng: 125.1616331
+                        lat: 21.332189,
+                        lng: 126.1616331
                     },
                     southWest: {
-                        lat: 5.751745,
-                        lng: 116.525891
+                        lat: 4.751745,
+                        lng: 115.525891
                     }
                 };
 
                 $rootScope.config = {
-                    scrollWheelZoom: false
+                    scrollWheelZoom: true
                 };
+
+                $rootScope.markers = {
+                    center: {
+                        lat: 12.640338306846802,
+                        lng: 120.84960937499999,
+                        message: '0 projects in here',
+                        focus: true,
+                        draggable: true
+                    }
+                };
+
+                $rootScope.center = { lat: 0, lng: 0, zoom: 5 };
 
                 $rootScope.regions = [
                     { "name": "ARMM", "provinces": [

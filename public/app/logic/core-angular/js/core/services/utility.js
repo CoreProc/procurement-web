@@ -22,10 +22,12 @@
                 .post(params);
         };
 
-        this.getSearch = function(params) {
+        this.getSearch = function(criteria, query) {
             return restangular
                 .one('search')
-                .get(params);
+                .one(criteria)
+                .one(query)
+                .get();
         };
     }
 

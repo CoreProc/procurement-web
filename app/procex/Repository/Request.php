@@ -12,7 +12,7 @@ class Request
     private $isSql;
     private $resource_id;
 
-    public $data;
+    public $data = null;
     public $errors = [];
 
     public function __construct($query, $isSql = false, $resource_id = null) {

@@ -17,14 +17,9 @@ Blade::setEscapedContentTags('<%%', '%%>');    // for escaped data
 Route::group(['prefix' => '/', 'after' => 'cached'], function () {
     Route::get('test', function () {
         $province = 'Abra';
-        $temp =  Coreproc\Procex\Model\BidInformation::whereHas('projectLocation', function ($q) use ($province) {
-            $q->whereLocation($province);
-        })->lists('ref_no');
-
-        return $temp;
-
-        return Coreproc\Procex\Model\Award::whereIn('ref_id', $temp)->sum('contract_amt');
-
+        $temp =  Coreproc\Procex\Model\BidInformation::where('classification', '=', 'abra')->where('publish_date', '>=', '2009-01-01T00:00:00')->count();
+		
+		return $temp;
     });
 
     Route::group(['prefix' => 'api'], function () {

@@ -110,8 +110,8 @@ class Search extends \Controller
 
             $results = $results->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->where('publish_date', '>=', $year .
-                '-01-01T00:00:00')
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')
+                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')
                 ->lists('ref_id'))->sum('contract_amt');
         }
 
@@ -178,10 +178,10 @@ class Search extends \Controller
         if ( ! empty($categories)) {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->whereIn('business_category', $categories);
+            })->whereIn('business_category', $categories)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
         } else {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
-                $q->whereLocation($province);
+                $q->whereLocation($province)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
             });
         }
 
@@ -189,7 +189,7 @@ class Search extends \Controller
             'total_budget_amount'     => $results->sum('approved_budget'),
             'total_spent_amount'      => Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->lists('ref_id'))->sum('contract_amt'),
+            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt'),
             'total_projects'          => $results->count(),
             'total_approved_projects' => $results->whereTenderStatus('Awarded')->count()
         ];

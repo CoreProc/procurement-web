@@ -32,7 +32,7 @@
         <input type="text" ng-model="search.query" ng-disabled="cardTest.length < 3" placeholder="{{ cardTest.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
     </div>
     <div class="panel panel-searchResults">
-        <md-card ng-repeat="card in cardTest | filter: search.query" class="card md-default-theme">
+        <md-card ng-repeat="card in cardTest | filter: search.query" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
 
             <!-- <button class="close">&times;</button> -->
 

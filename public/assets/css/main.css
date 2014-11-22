@@ -169,11 +169,7 @@ header {
     text-align: center;
     margin-top: 15px;
 }
-.social {
-    position: absolute;
-    bottom: 50px;
-    right: 15px;
-}
+
 .social i {
     font-size: 30px;
 }
@@ -184,6 +180,35 @@ header {
 }
 .fa-twitter {
     color: #00aced;
+}
+
+@media only screen and (min-width: 769px) {
+    .social {
+        position: absolute;
+        bottom: 0;
+        right: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper .title {
+        font-size: 65px!important;
+    }
+    .wrapper .caption {
+        color: #fff;
+        text-align: center;
+        font-size: 17px;
+    }
+    .social {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .copyright {
+        margin-top: 0;
+    }
+    .button-container {
+        padding: 12px 27px 13px 27px;
+    }
 }
 
 

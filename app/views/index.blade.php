@@ -45,12 +45,12 @@
                     <div class="map-marker"><i class="fa fa-map-marker"></i></div>
                     <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
                     <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+                    <div class="social">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-twitter"></i>
+                    </div>
                 </div>
-                
-                <div class="social">
-                    <i class="fa fa-facebook"></i>
-                    <i class="fa fa-twitter"></i>
-                </div>
+
             </div>
         </div>
     </div>

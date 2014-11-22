@@ -17,7 +17,7 @@
     <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
     <% HTML::style('assets/css/slideshow/css/style2.css') %>
     <% HTML::style('assets/css/main.css') %>
-    <% HTML::script('assets/js/vendor/modernizr.custom.86080.js') %>
+    <% HTML::script('assets/js/modernizr.custom.86080.js') %>
     <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
 </head>
 <body>

@@ -6,6 +6,7 @@ use Config;
 use Coreproc\Globe\Labs\Api\Classes\Sms;
 use Coreproc\Globe\Labs\GlobeLabs;
 use Coreproc\Procex\Model\Subscriber;
+use Lang;
 use Log;
 
 class SmsReceiver
@@ -63,8 +64,7 @@ class SmsReceiver
 
     public function sendHelpMessage()
     {
-
-        $message = 'Help message should be here';
+        $message = Lang::get('procex.smsMessages.help');
 
         $globeLabs = GlobeLabs::service(Config::get('procex.globelabs_api.appId'), Config::get('procex.globelabs_api.appSecret'));
 

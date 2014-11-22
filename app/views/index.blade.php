@@ -11,7 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <% HTML::style('assets/css/normalize.css') %>
     <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
     <% HTML::style('assets/css/main.css') %>
@@ -31,7 +32,8 @@
                 <h1 class="title">
                     <span style="color: #16A0E7;">Proc</span><span style="color: #F22727;">Ex</span>
                 </h1>
-                <div class="caption">lorem ipsum dolor sit amet dolorem</div>
+                <div class="caption">Procurement Explorer</div>
+                <div class="map-marker"><i class="fa fa-map-marker"></i></div>
             </div>
         </div>
     </div>

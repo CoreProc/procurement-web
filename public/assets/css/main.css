@@ -206,8 +206,8 @@ header {
     .copyright {
         margin-top: 0;
     }
-    .button-container {
-        padding: 12px 27px 13px 27px;
+    .button-container a {
+        padding: 12px 27px 13px 27px!important;
     }
 }
 

@@ -8,12 +8,10 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
-
-use Coreproc\Procex\Repository\Request;
-
 class Search extends \Controller {
     public function getQuery() {
         $filters = \Input::get('filters');
+
 
     }
 
@@ -25,7 +23,5 @@ class Search extends \Controller {
 
     }
 
-    public function getCategories() {
 
-    }
 } 

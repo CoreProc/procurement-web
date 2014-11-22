@@ -16,4 +16,8 @@ class Organization extends ProcurementModel {
     public function bidInformations() {
         return $this->hasMany('Coreproc\Procex\Model\BidInformation', 'org_id');
     }
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 } 

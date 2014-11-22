@@ -19,7 +19,6 @@ class Search extends \Controller
         $classification = \Input::get('classification');
         $categories     = \Input::get('categories');
         $year           = \Input::get('year');
-        $total_spent    = 0;
 
         if (empty($year)) {
             $year = '2009';
@@ -34,7 +33,7 @@ class Search extends \Controller
                 ->whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereHas('projectLocation',
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereHas('projectLocation',
                 function ($q) use ($areas) {
                     $q->whereIn('location', $areas);
                 })
@@ -47,7 +46,7 @@ class Search extends \Controller
                 ->whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereIn('classification', $classification)
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereIn('classification', $classification)
                 ->whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00'))->sum('contract_amt');
 
@@ -58,7 +57,7 @@ class Search extends \Controller
                 })->whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereHas('projectLocation',
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereHas('projectLocation',
                 function ($q) use ($areas) {
                     $q->whereIn('location', $areas);
                 })->whereIn('business_category', $categories)
@@ -72,7 +71,7 @@ class Search extends \Controller
                 ->whereIn('classification', $classification)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereHas('projectLocation',
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereHas('projectLocation',
                 function ($q) use ($areas) {
                     $q->whereIn('location', $areas);
                 })
@@ -86,24 +85,23 @@ class Search extends \Controller
                 })
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereHas('projectLocation',
-                function ($q) use ($areas) {
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereHas('projectLocation', function ($q) use ($areas) {
                     $q->whereIn('location', $areas);
-                })
-                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
+                })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))
+                ->sum('contract_amt');
 
         } elseif (empty($areas) && !empty($classification) && empty($categories)) {
             $results = BidInformation::whereIn('classification', $classification)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereIn('classification', $classification)
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereIn('classification', $classification)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
 
         } elseif (empty($areas) && empty($classification) && !empty($categories)) {
             $results = BidInformation::whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
-            $total_spent = Award::whereIn('ref_id', BidInformation::whereIn('business_category', $categories)
+            $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereIn('business_category', $categories)
                 ->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
 
         } else {

@@ -14,4 +14,5 @@ class BidInformation extends \Controller
     {
 
     }
+
 }

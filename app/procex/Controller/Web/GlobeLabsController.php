@@ -3,9 +3,11 @@
 namespace Coreproc\Procex\Controller\Web;
 
 use App;
+use Coreproc\Globe\Labs\Api\Services\SmsService;
 use Coreproc\Procex\Controller\BaseController;
 use Coreproc\Procex\Model\Subscriber;
 use Input;
+use Log;
 use Validator;
 
 class GlobeLabsController extends BaseController
@@ -40,6 +42,13 @@ class GlobeLabsController extends BaseController
         $subscriber->subscriber_number = $data['subscriberNumber'];
 
         $subscriber->save();
+    }
+
+    public function postIncomingSms()
+    {
+        $sms = SmsService::recieveSms();
+
+        Log::info("Received message {$sms->message}");
     }
 
 } 

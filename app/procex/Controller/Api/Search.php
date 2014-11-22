@@ -15,23 +15,32 @@ class Search extends \Controller
 {
 
     public function getQuery() {
-        $filters = \Input::get('filters');
-        $year     = \Input::get('year');
+        $areas          = \Input::get('areas');
+        $classification = \Input::get('classification');
+        $categories     = \Input::get('categories');
+        $year           = \Input::get('year');
 
-        if(empty($year))
+        if (empty($year)) {
             $year = '2009';
+        }
 
-        if (!empty($filters)) {
+        if (!empty($areas) && !empty($classification) ) {
+            $results = BidInformation::whereHas('projectLocation', function ($q) use ($areas) {
+                $q->whereIn('location', $areas);
+            })->paginate(\Config::get('procex.request_limit'));
+
 
 
         } else {
             $results = BidInformation::paginate(\Config::get('procex.request_limit'));
 
             $meta = [
-                'total_budget_amount'     => BidInformation::where('publish_date', '>=', $year.'-01-01T00:00:00')->sum('approved_budget'),
-                'total_spent_amount'      => Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->where('publish_date', '>=', $year.'-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt'),
-                'total_projects'          => BidInformation::where('publish_date', '>=', $year.'-01-01T00:00:00')->count(),
-                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')->where('publish_date', '>=', $year.'-01-01T00:00:00')->count()
+                'total_budget_amount'     => BidInformation::where('publish_date', '>=', $year . '-01-01T00:00:00')->sum('approved_budget'),
+                'total_spent_amount'      => Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->where('publish_date', '>=', $year .
+                                                                                                                                                '-01-01T00:00:00')
+                        ->lists('ref_id'))->sum('contract_amt'),
+                'total_projects'          => BidInformation::where('publish_date', '>=', $year . '-01-01T00:00:00')->count(),
+                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')->where('publish_date', '>=', $year . '-01-01T00:00:00')->count()
             ];
         }
 
@@ -52,9 +61,13 @@ class Search extends \Controller
         $province = \Input::get('province');
         $year     = \Input::get('year');
 
+        if (empty($year)) {
+            $year = '2009';
+        }
+
         $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
             $q->whereLocation($province);
-        })->where('publish_date', '>=', $year.'-01-01T00:00:00');
+        })->where('publish_date', '>=', $year . '-01-01T00:00:00');
 
         $meta = [
             'total_budget_amount'     => $results->sum('approved_budget'),

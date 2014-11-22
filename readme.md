@@ -42,17 +42,25 @@ https://procex.coreproc.ph/api/search/from-location?province=Abra&year=2009
 
 Fetch list of Areas
 
+https://procex.coreproc.ph/api/areas
+
 ### GET /classifications
 
 Fetch list of Classifications
+
+https://procex.coreproc.ph/api/classifications
 
 ### GET /categories
 
 Fetch list of Categories
 
+https://procex.coreproc.ph/api/categories
+
 ### GET /notice-types
 
 Fetch list of Notice Types
+
+https://procex.coreproc.ph/api/notice-types
 
 ### GET /utility
 
@@ -89,37 +97,53 @@ PROCEX INQUIRE
 
 Get a summary of bids using specialty keywords and filters
 
-* CLASSIFICATION
+##### CLASSIFICATION
 
 Get the complete list of classification names [here](https://procex.coreproc.ph/api/classifications)
 
-PROCEX SEARCH CLASSIFICATION <NAME> <YEAR [optional]> 
+Syntax
+
+```
+PROCEX SEARCH CLASSIFICATION <NAME> <YEAR [optional]>
+```
+
+Example
 
 ```
 PROCEX SEARCH CLASSIFICATION GOODS 2009
 ```
 
-* AREA
+##### AREA
 
 Get the complete list of areas [here](https://procex.coreproc.ph/api/areas)
 
+Syntax
+
+```
 PROCEX SEARCH AREA <NAME> <YEAR [optional]>
+```
+
+Example
 
 ```
 PROCEX SEARCH AREA CAVITE 2003
 ```
 
-* CATEGORY
+##### CATEGORY
 
 Get the complete list of category names [here](https://procex.coreproc.ph/api/categories)
 
+Syntax
+```
 PROCEX SEARCH CATEGORY <NAME> <YEAR [optional]>
+```
 
+Example
 ```
 PROCEX SEARCH CATEGORY AGRICULTURE 
 ```
 
 
-### License
+## License
 
 ProcEx is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

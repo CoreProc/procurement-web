@@ -6,7 +6,7 @@
  * Time: 8:21 PM
  */
 
-namespace Coreproc\Procex\Repository;
+namespace Coreproc\Procex\Model;
 
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 

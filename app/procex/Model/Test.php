@@ -1,4 +1,4 @@
-<?php namespace Coreproc\Procex\Repository;
+<?php namespace Coreproc\Procex\Model;
 
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 

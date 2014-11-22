@@ -61,9 +61,16 @@ class Search extends \Controller
 
         $results = BidInformation::whereHas('projectLocation', function($q) use ($province) {
             $q->whereLocation($province);
-        })->paginate(10);
+        });
 
-        return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
+        $meta = [
+            'total_budget_amount'     => $results->sum('approved_budget'),
+            'total_spent_amount'      => '',
+            'total_projects'          => $results->count(),
+            'total_approved_projects' => $results->whereTenderStatus('Awarded')->count()
+        ];
+
+        return \Response::api()->withPaginator($results->paginate(10), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
 }

@@ -70,13 +70,17 @@ class SmsReceiver
 
         $smsService = $globeLabs->smsService();
 
-        $smsService->setDebug(true);
+        $accessToken = $this->accessToken;
+        $mobileNumber = $this->sms->sender->get();
+        $shortCode = Config::get('globelabs_api.shortCode');
+
+        Log::info("Access Token: {$accessToken}, Mobile Number: {$mobileNumber}, Short Code: {$shortCode}");
 
         // we try to get the access token.....
-        $smsService->setAccessToken($this->accessToken);
-        $smsService->setMobileNumber($this->sms->sender->get());
+        $smsService->setAccessToken($accessToken);
+        $smsService->setMobileNumber($mobileNumber);
         $smsService->setMessage($message);
-        $smsService->setShortCode(Config::get('globelabs_api.shortCode'));
+        $smsService->setShortCode($shortCode);
         $sms = $smsService->sendSms();
 
         if ($sms->isSent) {

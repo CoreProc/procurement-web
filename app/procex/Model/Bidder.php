@@ -11,7 +11,7 @@ namespace Coreproc\Procex\Model;
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 
 class Bidder extends ProcurementModel {
-    protected $table = '922f8c2c-8ef6-4e46-bc4e-8799c47b8ecf';
+    protected $table = '6427affb-e841-45b8-b0dc-ed267498724a';
 
     public function organization() {
         return $this->belongsTo('Coreproc\Procex\Model\Organization', 'org_id');

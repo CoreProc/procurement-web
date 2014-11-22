@@ -11,7 +11,7 @@ namespace Coreproc\Procex\Model;
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 
 class Award extends ProcurementModel {
-    protected $table = '314aa773-e6e4-4554-80ce-4f588212e0d1';
+    protected $table = '539525df-fc9a-4adf-b33d-04747e95f120';
 
     public function bidLineItems() {
         return $this->belongsTo('Coreproc\Procex\Model\BidLineItem', 'item_no');

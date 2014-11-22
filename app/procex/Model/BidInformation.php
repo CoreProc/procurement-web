@@ -6,7 +6,7 @@ use Coreproc\Procex\Repository\Model as ProcurementModel;
 
 class BidInformation extends ProcurementModel
 {
-    protected $table = '9c74991c-a5e6-4489-8413-c20a8a181d90';
+    protected $table = 'baccd784-45a2-4c0c-82a6-61694cd68c9d';
 
     public function bidLineItems() {
         return $this->hasMany('Coreproc\Procex\Model\BidLineItem', 'ref_id');

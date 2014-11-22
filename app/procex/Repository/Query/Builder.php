@@ -2,7 +2,8 @@
 
 namespace Coreproc\Procex\Repository\Query;
 
-use \Illuminate\Database\Query\Builder as EloquentBuilder;
+use Coreproc\Procex\Repository\Request;
+use Illuminate\Database\Query\Builder as EloquentBuilder;
 
 class Builder extends EloquentBuilder
 {
@@ -12,24 +13,32 @@ class Builder extends EloquentBuilder
      *
      * @return array
      */
-    protected function runSelect()
-    {
+    protected function runSelect() {
         //dd($this->getBindings());
         //dd($this->toSql());
 
         $statement = $this->toSql();
-        $values = $this->getBindings();
+        $values    = $this->getBindings();
 
         foreach ($values as $v) {
             $pos = strpos($statement, '?');
             if ($pos !== false) {
-                if (is_string($v)) $v = '\'' . addslashes($v) . '\'';
+                if (is_string($v)) {
+                    $v = '\'' . addslashes($v) . '\'';
+                }
                 $statement = substr_replace($statement, $v, $pos, strlen(1));
             }
         }
 
-        dd($statement);
+        $statement = str_replace('`', '"', $statement);
 
+        $request = new Request($statement, true);
+
+        if ($request->execute()) {
+            echo $request->data;
+        } else {
+            var_dump($request->errors);
+        }
         //return $this->connection->select($this->toSql(), $this->getBindings());
     }
 
@@ -38,8 +47,7 @@ class Builder extends EloquentBuilder
      *
      * @return \Illuminate\Database\Query\Builder
      */
-    public function newQuery()
-    {
+    public function newQuery() {
         return new Builder($this->connection, $this->grammar, $this->processor);
     }
 

@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'Coreproc\Procex\Controller\HomeController@index');
+
+Route::get('/explore', 'Coreproc\Procex\Controller\HomeController@explore');

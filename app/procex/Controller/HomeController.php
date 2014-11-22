@@ -28,5 +28,10 @@ class HomeController extends BaseController {
     {
         $org = Organization::has('bidInformations')->get();
     }
+    
+    public function explore()
+    {
+		return \View::make('hello');
+    }
 
 }

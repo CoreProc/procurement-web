@@ -12,21 +12,27 @@ use Coreproc\Procex\Repository\Model as ProcurementModel;
 
 class Bidder extends ProcurementModel
 {
+
     protected $table = '6427affb-e841-45b8-b0dc-ed267498724a';
 
-    public function organization() {
+    public function organization()
+    {
         return $this->belongsTo('Coreproc\Procex\Model\Organization', 'org_id');
     }
 
-    public function bidLineItem() {
+    public function bidLineItem()
+    {
         return $this->belongsTo('Coreproc\Procex\Model\BidLineItem', 'item_no');
     }
 
-    public function award() {
+    public function award()
+    {
         return $this->belongsTo('Coreproc\Procex\Model\Award', 'award_id');
     }
 
-    public static function getTableName() {
+    public static function getTableName()
+    {
         return with(new static)->getTable();
     }
-} 
+
+}

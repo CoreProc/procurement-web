@@ -14,9 +14,11 @@
 	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <% HTML::style('assets/css/normalize.css') %>
-    <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
-    <% HTML::style('assets/css/main.css') %>
-    <% HTML::style('assets/js/vendor/modernizr-2.6.2.min.js') %>
+        <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
+        <% HTML::style('assets/js/vendor/slideshow/css/demo.css') %>
+        <% HTML::style('assets/js/vendor/slideshow/css/style2.css') %>
+        <% HTML::style('assets/css/main.css') %>
+        <% HTML::script('assets/js/vendor/slideshow/js/modernizr.custom.86080.js') %>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -24,79 +26,50 @@
 <![endif]-->
 
 
+<ul class="cb-slideshow">
+    <li><span>Image 01</span></li>
+    <li><span>Image 02</span></li>
+    <li><span>Image 03</span></li>
+    <li><span>Image 04</span></li>
+    <li><span>Image 05</span></li>
+</ul>
 
-<header>
-    <div class="header-bg">
-        <div class="row">
-            <div class="large-12 columns">
-                <h1 class="title">
-                    <span style="color: #16A0E7;">Proc</span><span style="color: #F22727;">Ex</span>
-                </h1>
-                <div class="caption">Procurement Explorer</div>
-                <div class="map-marker"><i class="fa fa-map-marker"></i></div>
+<div class="wrapper">
+    <div class="row content-row">
+        <div class="large-12 columns">
+            <h1 class="title">
+                <span class="blue">Proc</span><span class="red">Ex</span>
+            </h1>
+            <div class="caption">Procurement Explorer</div>
+            <div class="map-marker"><i class="fa fa-map-marker"></i></div>
+            <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
+            <div class="copyright">Copyright © 2014 kryo.io All Right Reserved</div>
+            <div class="social">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-twitter"></i>
             </div>
-        </div>
-    </div>
-</header>
-
-<div class="content">
-    <h2 class="heading">What we offer</h2>
-
-    <div class="row">
-        <div class="large-4 columns content-features">
-            <img src="assets/img/flexible.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/lower-interest.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/one-day.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-4 columns content-features">
-            <img src="assets/img/partnership.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/transparent.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
-        </div>
-        <div class="large-4 columns content-features">
-            <img src="assets/img/flexible.png" alt="icon" />
-            <p>lorem ipsum dolor sit amet cum tenetur animi. et laboris aut aspexerat fugiat. ipsa amet quoddam colebatur propter. qui tempore et magna sibi. id ipsum deinde, repellat minim. mollit odit culpa qui aut.</p>
         </div>
     </div>
 
 </div>
 
-
-
-
-<footer>
-    <div class="row">
-        <div class="large-12 columns">
-            This is the footer
-        </div>
-    </div>
-</footer>
-
+</body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <% HTML::script('assets/js/plugins.js') %>
 <% HTML::script('assets/js/main.js') %>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
 <script>
-	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-		e.src='//www.google-analytics.com/analytics.js';
-		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	ga('create','UA-XXXXX-X');ga('send','pageview');
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-57001888-1', 'auto');
+ ga('send', 'pageview');
+
 </script>
 </body>
 </html>

@@ -1,16 +1,15 @@
 <?php
 
-
 namespace Coreproc\Procex\Controller\Api;
 
 use Coreproc\Procex\Model\BidInformation;
 
-class Classification extends \Controller
+class NoticeType extends \Controller
 {
 
     public function getIndex()
     {
-        $results = BidInformation::groupBy('classification')->remember(500)->lists('classification');
+        $results = BidInformation::groupBy('notice_type')->remember(500)->lists('notice_type');
 
         return \Response::json([
             'status' => 'ok',

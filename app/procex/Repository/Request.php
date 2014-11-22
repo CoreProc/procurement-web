@@ -30,29 +30,36 @@ class Request
             $client = new Client();
 
             /** @noinspection PhpVoidFunctionResultUsedInspection */
-            $response = $this->isSql ? $client->get($this->baseUrl, [
-                'query' => [
-                    'sql' => $this->query
-                ]
-            ]) : $client->get($this->baseUrl, [
-                'query' => [
-                    'resource_id' => $this->resource_id,
-                    'q'           => $this->query
-                ]
-            ]);
+            $response = null;
 
-            if ($response->getStatusCode() == '200') {
-                $temp = json_decode($response->getBody());
+            try {
+                $response = $this->isSql ? $client->get($this->baseUrl, [
+                    'query' => [
+                        'sql' => $this->query
+                    ]
+                ]) : $client->get($this->baseUrl, [
+                    'query' => [
+                        'resource_id' => $this->resource_id,
+                        'q'           => $this->query
+                    ]
+                ]);
 
-                if($temp->success) {
-                    $this->data = $temp->result->records;
+                if ($response->getStatusCode() == '200') {
+                    $temp = json_decode($response->getBody());
+
+                    if ($temp->success) {
+                        $this->data = $temp->result->records;
+                    } else {
+                        $this->errors = $temp->error->query;
+                    }
+
+                    return true;
                 } else {
-                    $this->errors = $temp->error->query;
-                }
+                    $this->errors[] = $response;
 
-                return true;
-            } else {
-                $this->errors[] = $response;
+                    return false;
+                }
+            } catch (\Exception $e) {
 
                 return false;
             }

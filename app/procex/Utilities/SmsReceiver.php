@@ -66,13 +66,13 @@ class SmsReceiver
 
         $message = 'Help message should be here';
 
-        $globeLabs = GlobeLabs::service(Config::get('globelabs_api.appId'), Config::get('globelabs_api.appSecret'));
+        $globeLabs = GlobeLabs::service(Config::get('procex.globelabs_api.appId'), Config::get('procex.globelabs_api.appSecret'));
 
         $smsService = $globeLabs->smsService();
 
         $accessToken = $this->accessToken;
         $mobileNumber = $this->sms->sender->get();
-        $shortCode = Config::get('globelabs_api.shortCode');
+        $shortCode = Config::get('procex.globelabs_api.shortCode');
 
         Log::info("Access Token: {$accessToken}, Mobile Number: {$mobileNumber}, Short Code: {$shortCode}");
 

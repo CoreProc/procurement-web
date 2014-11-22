@@ -16,7 +16,7 @@ Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::group(['prefix' => '/'], function() {
     Route::get('test', function() {
-        return Organization::where('org_id','=', '31639')->limit(5)->get();
+        return Coreproc\Procex\Model\Organization::where('org_id','=', '31639')->limit(5)->get();
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');

@@ -4,7 +4,7 @@
 /bootstrap/compiled.php
 .env.*.php
 .env.php
-/app/config/local/
+/app/config/local/database.php
 composer.lock
 
 ### Composer ###

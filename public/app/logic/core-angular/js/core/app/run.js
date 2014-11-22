@@ -4,6 +4,8 @@
         .run([
             '$rootScope', '$mdSidenav',
             function($rootScope, $mdSidenav) {
+                $rootScope.filtersOpen = false;
+
                 $rootScope.debug = function(str) {
                     console.log(str);
                 };

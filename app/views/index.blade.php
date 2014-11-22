@@ -19,6 +19,8 @@
         <% HTML::style('assets/js/vendor/slideshow/css/style2.css') %>
         <% HTML::style('assets/css/main.css') %>
         <% HTML::script('assets/js/vendor/slideshow/js/modernizr.custom.86080.js') %>
+
+        <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -43,7 +45,7 @@
             <div class="caption">Procurement Explorer</div>
             <div class="map-marker"><i class="fa fa-map-marker"></i></div>
             <div class="button-container"><a href="#" class="button large success">Get Started</a></div>
-            <div class="copyright">Copyright © 2014 kryo.io All Right Reserved</div>
+            <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
             <div class="social">
                 <i class="fa fa-facebook"></i>
                 <i class="fa fa-twitter"></i>

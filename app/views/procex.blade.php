@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="app" id="overlay">
+<html ng-app="app" id="overlay" ng-style="{ 'overflow-y': $media('xs') ? '' }">
 <head>
     <meta charset="UTF-8">
     <title>Home | ProcEx - PROCurement EXplorer</title>
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
     <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
-<body layout="column" layout-fill>
+<body layout="column" layout-fill ng-controller="RootCtrl">
 
-<div class="overlay resultsOverlay">
-    <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2>
+<div layout-fill class="overlay resultsOverlay">
+    <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
     <md-card ng-repeat="card in cardTest" class="card md-default-theme">
         <button class="close">&times;</button>
         <h3 ng-bind="card.name"></h3>

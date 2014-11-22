@@ -3,9 +3,11 @@ html#overlay
     position: absolute
     &.resultsOverlay
       left: 45px
-      top: 2px
+      top: 0
       width: 300px
+      max-height: 100%
       z-index: 2000
+      overflow-y: auto
       .card
         background-color: #fff
         .close

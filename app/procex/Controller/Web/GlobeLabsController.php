@@ -3,7 +3,10 @@
 namespace Coreproc\Procex\Controller\Web;
 
 use App;
+use Carbon\Carbon;
+use Coreproc\Globe\Labs\Api\Classes\Sms;
 use Coreproc\Globe\Labs\Api\Services\SmsService;
+use Coreproc\MsisdnPh\Msisdn;
 use Coreproc\Procex\Controller\BaseController;
 use Coreproc\Procex\Model\Subscriber;
 use Input;
@@ -48,7 +51,29 @@ class GlobeLabsController extends BaseController
     {
         Log::info('Recieved SMS... trying to read');
 
-        $sms = SmsService::recieveSms();
+        $jsonStringData = file_get_contents('php://input');
+
+        if (empty($jsonStringData)) {
+            App::abort(400);
+        }
+
+        $data = json_decode($jsonStringData);
+
+        if (empty($data)) {
+            App::abort(400);
+        }
+
+        $inboundSmsMessage = $data->inboundSMSMessageList->inboundSMSMessage[0];
+
+        if (empty($inboundSmsMessage)) {
+            App::abort(400);
+        }
+
+        $sms = new Sms();
+        $sms->messageId = $inboundSmsMessage->messageId;
+        $sms->sender = new Msisdn($inboundSmsMessage->senderAddress);
+        $sms->message = $inboundSmsMessage->message;
+        $sms->createdAt = new Carbon($inboundSmsMessage->dateTime);
 
         Log::info("Received message {$sms->message}");
     }

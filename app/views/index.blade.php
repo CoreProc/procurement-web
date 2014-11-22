@@ -15,11 +15,10 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <% HTML::style('assets/css/normalize.css') %>
     <% HTML::style('assets/css/foundation/css/foundation.min.css') %>
-    <% HTML::style('assets/js/vendor/slideshow/css/style2.css') %>
+    <% HTML::style('assets/css/slideshow/css/style2.css') %>
     <% HTML::style('assets/css/main.css') %>
-    <% HTML::script('assets/js/vendor/slideshow/js/modernizr.custom.86080.js') %>
-
-        <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
+    <% HTML::script('assets/css/slideshow/js/modernizr.custom.86080.js') %>
+    <link rel="shortcut icon" href="<% asset('favicon.ico') %>"/>
 </head>
 <body>
 <!--[if lt IE 7]>

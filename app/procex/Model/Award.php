@@ -20,4 +20,8 @@ class Award extends ProcurementModel {
     public function bidders() {
         return $this->hasMany('Coreproc\Procex\Model\Bidder', 'award_id');
     }
+
+    public function tableName() {
+        return $this::getTable();
+    }
 } 

@@ -21,4 +21,8 @@ class BidLineItem extends ProcurementModel {
     public function bidInformation() {
         return $this->belongsTo('Coreproc\Procex\Model\BidInformation', 'ref_id');
     }
+
+    public static function getTableName() {
+        return with(new static)->getTable();
+    }
 } 

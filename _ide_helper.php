@@ -12270,5 +12270,72 @@ namespace {
     }
 
 
+    class Geotools extends \Toin0u\Geotools\GeotoolsFacade{
+        
+        /**
+         * Set the latitude and the longitude of the coordinates into an selected ellipsoid.
+         *
+         * @param \Toin0u\Geotools\ResultInterface|array|string $coordinates The coordinates.
+         * @param \Toin0u\Geotools\Ellipsoid $ellipsoid The selected ellipsoid (WGS84 by default).
+         * @return \Toin0u\Geotools\Coordinate 
+         * @static 
+         */
+        public static function coordinate($coordinates, $ellipsoid = null){
+            return \Toin0u\Geotools\Geotools::coordinate($coordinates, $ellipsoid);
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function distance(){
+            //Method inherited from \League\Geotools\Geotools            
+            return \Toin0u\Geotools\Geotools::distance();
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function point(){
+            //Method inherited from \League\Geotools\Geotools            
+            return \Toin0u\Geotools\Geotools::point();
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function batch($geocoder){
+            //Method inherited from \League\Geotools\Geotools            
+            return \Toin0u\Geotools\Geotools::batch($geocoder);
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function geohash(){
+            //Method inherited from \League\Geotools\Geotools            
+            return \Toin0u\Geotools\Geotools::geohash();
+        }
+        
+        /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */
+        public static function convert($coordinates){
+            //Method inherited from \League\Geotools\Geotools            
+            return \Toin0u\Geotools\Geotools::convert($coordinates);
+        }
+        
+    }
+
+
 }
 

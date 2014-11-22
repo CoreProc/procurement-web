@@ -16,7 +16,7 @@ Blade::setEscapedContentTags('<%%', '%%>');    // for escaped data
 
 Route::group(['prefix' => '/', 'after' => 'cached'], function () {
     Route::get('test', function () {
-        
+
     });
 
     Route::group(['prefix' => 'api'], function () {

@@ -172,9 +172,15 @@ class Search extends \Controller
 
         $categories = $categories->categories;
 
-        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
-            $q->whereLocation($province);
-        })->whereIn('business_category', $categories);
+        if (!empty($categories)) {
+            $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+                $q->whereLocation($province);
+            })->whereIn('business_category', $categories);
+        } else {
+            $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
+                $q->whereLocation($province);
+            });
+        }
 
         $meta = [
             'total_budget_amount'     => $results->sum('approved_budget'),

@@ -9,6 +9,7 @@ use Coreproc\Globe\Labs\Api\Services\SmsService;
 use Coreproc\MsisdnPh\Msisdn;
 use Coreproc\Procex\Controller\BaseController;
 use Coreproc\Procex\Model\Subscriber;
+use Coreproc\Procex\Utilities\SmsReceiver;
 use Input;
 use Log;
 use Validator;
@@ -75,7 +76,13 @@ class GlobeLabsController extends BaseController
         $sms->message = $inboundSmsMessage->message;
         $sms->createdAt = new Carbon($inboundSmsMessage->dateTime);
 
+        // ok, now that we have the message, we can parse
+
         Log::info("Received message {$sms->message}");
+
+        $smsReciever = new SmsReceiver($sms);
+        $smsReciever->received($sms->message);
+
     }
 
 } 

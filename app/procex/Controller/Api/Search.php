@@ -8,20 +8,55 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
-class Search extends \Controller {
-    public function getQuery() {
+use Coreproc\Procex\Model\BidInformation;
+use Coreproc\Procex\Repository\Request;
+
+class Search extends \Controller
+{
+
+    public function getQuery()
+    {
         $filters = \Input::get('filters');
 
+        if ( ! empty($filters)) {
+            $filters = join(' ', $filters);
+
+            $results = new Request($filters, false, BidInformation::getTableName());
+
+            if ( ! $results->execute()) {
+                return \Response::api()->errorNotFound();
+            }
+        } else {
+            $results = BidInformation::paginate(15);
+        }
+
+        $meta = [
+            ''
+        ];
+
+        return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
+    }
+
+    public function getClassification($classification = null)
+    {
 
     }
 
-    public function getClassification() {
-        $classification_id = \Input::get('classification_id');
-    }
-
-    public function getAreas() {
+    public function getAreas($area = null)
+    {
 
     }
 
+    public function getCategories($category = null)
+    {
 
-} 
+    }
+
+    public function getFromLocation($long, $lat)
+    {
+        $long = \Input::get('long');
+        $lat = \Input::get('lat');
+
+    }
+
+}

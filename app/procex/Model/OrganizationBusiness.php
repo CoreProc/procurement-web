@@ -10,10 +10,14 @@ namespace Coreproc\Procex\Model;
 
 use Coreproc\Procex\Repository\Model as ProcurementModel;
 
-class OrganizationBusiness extends ProcurementModel {
+class OrganizationBusiness extends ProcurementModel
+{
+
     protected $table = 'b0efc90c-88ab-469a-a694-e598dd47f724';
 
-    public static function getTableName() {
+    public static function getTableName()
+    {
         return with(new static)->getTable();
     }
-} 
+
+}

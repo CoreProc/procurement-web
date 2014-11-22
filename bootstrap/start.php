@@ -26,7 +26,17 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead', 'Yui-chan', 'Jonathans-MBP', 'idea-PC', 'Christophers-MacBook-Pro.local'),
+	'local' => [
+        'homestead',
+        'Yui-chan',
+        'Jonathans-MBP',
+        'idea-PC',
+        'Christophers-MacBook-Pro.local'
+    ],
+
+    'production' => [
+        'cp-sgp1-dev'
+    ]
 
 ));
 

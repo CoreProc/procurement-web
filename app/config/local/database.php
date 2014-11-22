@@ -24,8 +24,8 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'procex',
-			'username'  => 'root',
-			'password'  => '',
+			'username'  => 'procex',
+			'password'  => '2iK813MuF7',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
@@ -34,14 +34,13 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'homestead',
-			'username' => 'homestead',
-			'password' => 'secret',
+			'database' => 'procex-meta',
+			'username' => 'postgres',
+			'password' => '1YBowBa0jPmo4CZq',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
 		),
-
 	),
 
 );

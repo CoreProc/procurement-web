@@ -110,3 +110,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 assets/themes/
+
+app/config/production

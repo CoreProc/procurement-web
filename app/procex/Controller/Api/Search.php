@@ -17,6 +17,7 @@ class Search extends \Controller
 
     public function getQuery() {
         $filters = \Input::get('filters');
+        $year     = \Input::get('year');
 
         if (!empty($filters)) {
             $filters = join(' ', $filters);
@@ -31,7 +32,7 @@ class Search extends \Controller
         } else {
             $results = BidInformation::paginate(\Config::get('procex.request_limit'));
 
-            $temp = BidInformation::whereTenderStatus('Awarded')->lists('ref_no');
+            $temp = BidInformation::whereTenderStatus('Awarded')->lists('ref_id');
 
             $cost = Award::whereIn('ref_id', $temp)->sum('contract_amt');
 
@@ -40,7 +41,6 @@ class Search extends \Controller
                 'total_spent_amount'      => $cost,
                 'total_projects'          => BidInformation::all()->count(),
                 'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')->count()
-
             ];
         }
 
@@ -57,11 +57,13 @@ class Search extends \Controller
         return \Response::api()->errorNotFound();
     }
 
-    public function getFromLocation($province) {
+    public function getFromLocation() {
+        $province = \Input::get('province');
+        $year     = \Input::get('year');
 
-        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province) {
+        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
             $q->whereLocation($province);
-        });
+        })->where('publish_date', '>=', '2008-01-01T00:00:00');
 
         $meta = [
             'total_budget_amount'     => $results->sum('approved_budget'),

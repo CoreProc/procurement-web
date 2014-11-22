@@ -34,4 +34,9 @@ class HomeController extends BaseController {
 		$this->layout = \View::make('landing');
 	}
 
+    public function test()
+    {
+        echo Lang::get('procex.smsMessages.help');
+    }
+
 }

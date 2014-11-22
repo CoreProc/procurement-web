@@ -3,13 +3,15 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
-
 use Geocoder\Geocoder;
 use Geocoder\HttpAdapter\CurlHttpAdapter;
 use Geocoder\Provider\OpenStreetMapProvider;
 
-class Utility extends \Controller {
-    public function postLookupProvince() {
+class Utility extends \Controller
+{
+
+    public function postLookupProvince()
+    {
         $long = \Input::get('long');
         $lat = \Input::get('lat');
 
@@ -18,13 +20,14 @@ class Utility extends \Controller {
 
         $geocoder = new Geocoder($provider);
 
-        $result = $geocoder->reverse($lat,$long);
+        $result = $geocoder->reverse($lat, $long);
 
         return \Response::json([
             'status' => 'ok',
-            'data' => [
+            'data'   => [
                 'province' => $result->getRegion()
             ]
         ]);
     }
-} 
+
+}

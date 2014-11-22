@@ -2,12 +2,16 @@
 
 namespace Coreproc\Procex\Controller\Api;
 
-class BidInformation extends \Controller {
-    public function getIndex() {
+class BidInformation extends \Controller
+{
+
+    public function getIndex()
+    {
 
     }
 
-    public function getItem($ref_id) {
+    public function getItem($ref_id)
+    {
 
     }
 }

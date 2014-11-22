@@ -13,12 +13,13 @@ class Builder extends EloquentBuilder
      *
      * @return array
      */
-    protected function runSelect() {
+    protected function runSelect()
+    {
         //dd($this->getBindings());
         //dd($this->toSql());
 
         $statement = $this->toSql();
-        $values    = $this->getBindings();
+        $values = $this->getBindings();
 
         foreach ($values as $v) {
             $pos = strpos($statement, '?');
@@ -47,7 +48,8 @@ class Builder extends EloquentBuilder
      *
      * @return \Illuminate\Database\Query\Builder
      */
-    public function newQuery() {
+    public function newQuery()
+    {
         return new Builder($this->connection, $this->grammar, $this->processor);
     }
 

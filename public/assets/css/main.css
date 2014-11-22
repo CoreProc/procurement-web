@@ -113,9 +113,12 @@ html {
 }
 body {
     height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 header {
     width: 100%;
+    height: 100%;
 }
 .wrapper {
     width: 100%;
@@ -123,15 +126,25 @@ header {
     display:block;
     font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
 }
+.wrapper .content-row, .content-row .large-12 {
+    height: 100%;
+}
 .wrapper .title {
     color: #fff;
     font-weight: bold;
     font-size: 80px;
     margin-bottom: 0;
-    margin-top: 170px;
     text-align: center;
     /* Fallback for web browsers that doesn't support RGBa */
     font-family: 'Oswald', sans-serif;
+}
+.get-started-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 }
 .wrapper .caption {
     color: #fff;
@@ -173,9 +186,6 @@ header {
     color: #00aced;
 }
 
-.wrapper-2 {
-    background: #000;
-}
 
 /* ==========================================================================
    Helper classes

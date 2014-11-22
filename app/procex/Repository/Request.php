@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mark Jayson
- * Date: 11/22/2014
- * Time: 10:48 AM
- */
 
 namespace Coreproc\Procex\Repository;
 
@@ -32,7 +26,7 @@ class Request
     }
 
     public function execute() {
-        if (!empty($this->errors)) {
+        if (empty($this->errors)) {
             $client = new Client();
 
             /** @noinspection PhpVoidFunctionResultUsedInspection */
@@ -47,12 +41,18 @@ class Request
                 ]
             ]);
 
-            if ($response->getStatusCode() === '200') {
-                $this->data = json_decode($response->getBody());
+            if ($response->getStatusCode() == '200') {
+                $temp = json_decode($response->getBody());
+
+                if($temp->success) {
+                    $this->data = $temp->result->records;
+                } else {
+                    $this->errors = $temp->error->query;
+                }
 
                 return true;
             } else {
-                $this->errors[] = $response->getBody();
+                $this->errors[] = $response;
 
                 return false;
             }

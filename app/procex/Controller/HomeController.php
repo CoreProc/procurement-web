@@ -19,19 +19,19 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return \View::make('hello');
-	}
-
     public function index()
     {
-        $org = Organization::limit(5)->get();
+        $this->layout = \View::make('index');
     }
     
     public function explore()
     {
-		return \View::make('procex.explore');
+		$this->layout = \View::make('procex.explore');
     }
+
+	public function landing()
+	{
+		$this->layout = \View::make('landing');
+	}
 
 }

@@ -14,6 +14,14 @@
 Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
-Route::get('/', 'Coreproc\Procex\Controller\HomeController@index');
+Route::group(['prefix' => '/'], function() {
+    Route::get('test', function() {
+        return Organization::where('org_id','=', '31639')->limit(5)->get();
+    });
 
-Route::get('/explore', 'Coreproc\Procex\Controller\HomeController@explore');
+    Route::get('', 'Coreproc\Procex\Controller\HomeController@index');
+
+    Route::get('explore', 'Coreproc\Procex\Controller\HomeController@explore');
+
+});
+

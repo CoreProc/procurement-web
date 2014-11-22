@@ -2,6 +2,7 @@
     angular
         .module('app', [
             'ngMaterial',
+            'leaflet-directive',
 
             'restangular',
 

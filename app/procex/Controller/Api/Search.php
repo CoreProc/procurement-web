@@ -66,15 +66,15 @@ class Search extends \Controller
             $q->whereLocation($province);
         });
 
-        $temp = $results;
+       //  $temp = $results;
 
-        $yay = $temp->lists('ref_no');
+       // $yay = $temp->lists('ref_no');
 
         $meta = [
             'total_budget_amount'     => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
                 $q->whereLocation($province);
             })->sum('approved_budget'),
-            'total_spent_amount'      => Award::whereIn('ref_id', $yay)->sum('contract_amt'),
+            //'total_spent_amount'      => Award::whereIn('ref_id', $yay)->sum('contract_amt'),
             'total_projects'          => BidInformation::whereHas('projectLocation', function ($q) use ($province) {
                 $q->whereLocation($province);
             })->count(),

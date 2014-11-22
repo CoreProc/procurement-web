@@ -32,6 +32,7 @@ html {
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility!important;
+    font-family: sans-serif;
 }
 
 /*
@@ -107,37 +108,35 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
-
-header {
-    background: url('/assets/img/header-bg.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 450px;
+html {
+    height: 100%;
 }
-.header-bg {
+body {
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
     width: 100%;
     height: 100%;
-    background: rgb(0, 0, 0);
-    /* RGBa with 0.6 opacity */
-    background: rgba(0, 0, 0, 0.60);
-    /* For IE 5.5 to 7*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-    /* For IE 8*/
+    display:block;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
 }
-header .title {
+.wrapper .content-row, .content-row .large-12 {
+    height: 100%;
+}
+.wrapper .title {
     color: #fff;
     font-weight: bold;
     font-size: 80px;
-    margin-top: 90px;
+    margin-top: 170px;
     margin-bottom: 0;
     text-align: center;
     /* Fallback for web browsers that doesn't support RGBa */
     font-family: 'Oswald', sans-serif;
 }
-header .caption {
+.wrapper .caption {
     color: #fff;
     text-align: center;
     font-size: 21px;
@@ -145,92 +144,37 @@ header .caption {
 .map-marker {
     text-align: center;
 }
-header .fa-map-marker {
+.wrapper .fa-map-marker {
     font-size: 60px;
     margin-top: 15px;
     color: #e85f5f;
 }
-.header-button {
+.copyright {
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+}
+.button-container {
     text-align: center;
     margin-top: 15px;
 }
-
-.wrapper {
-    min-height: 300px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-.wrapper h2 {
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Oswald', sans-serif;
-}
-.content-features img {
-    width: 100px;
-    display: block;
-    margin: auto;
-}
-.content-features p {
-    font-size: 14px;
-}
-
-.sub-footer {
-    background: #181818;
-    color: #fff;
-    padding: 35px 0 55px 0;
-    font-size: 14px;
-    line-height: 17px;
-}
-.sub-footer textarea {
-    height: 143px;
-}
-.footer-about {
-    margin-bottom: 20px;
-}
-.footer-about h4 {
-    color: #fff;
-}
-.sponsor {
-    margin-bottom: 20px;
-}
-.sponsor img {
-    width: 70px;
-    margin-right: 15px;
-}
-.sponsor img:last-child {
-    width: 118px;
-    margin-right: 0;
-}
 .social {
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 50px;
+    right: 15px;
 }
 .social i {
-    font-size: 23px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 2px;
+    font-size: 30px;
 }
 .fa-facebook {
-    background: #3b5998;
-    padding: 8px 14px;
+    color: #3b5998;
+    margin-right: 10px;
+    curson: pointer;
 }
 .fa-twitter {
-    background: #00aced;
-    padding: 8px 10px;
+    color: #00aced;
 }
-
-footer {
-    background: #000;
-    color: #fff;
-    font-size: 11px;
-    padding: 10px 0;
-}
-
-
-
-
-
-
 
 
 

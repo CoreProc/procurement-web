@@ -16,7 +16,7 @@ Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::group(['prefix' => '/'], function() {
     Route::get('testquery', function() {
-        return Coreproc\Procex\Model\BidInformation::groupBy('business_category')->lists('business_category');
+        return Coreproc\Procex\Model\BidInformation::groupBy('notice_type')->lists('notice_type');
     });
 
     Route::group(['prefix' => 'api'] , function() {
@@ -26,6 +26,7 @@ Route::group(['prefix' => '/'], function() {
         Route::controller('categories', 'Coreproc\Procex\Controller\Api\Category');
         Route::controller('areas', 'Coreproc\Procex\Controller\Api\Area');
         Route::controller('classifications', 'Coreproc\Procex\Controller\Api\Classification');
+        Route::controller('notice-types', 'Coreproc\Procex\Controller\Api\NoticeType');
     });
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');

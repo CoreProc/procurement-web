@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ProcEx by CoreProc</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ProcEx</h1>
+        <p>ProcEx (Procurement Explorer) is the most awesome way to browse and analyze PHILGEPS data on bids and stuff.</p>
+        <p class="view"><a href="https://github.com/CoreProc/procurement-web">View the Project on GitHub <small>CoreProc/procurement-web</small></a></p>
+        <ul>
+          <li><a href="https://github.com/CoreProc/procurement-web/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/CoreProc/procurement-web/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/CoreProc/procurement-web">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="procex" class="anchor" href="#procex" aria-hidden="true"><span class="octicon octicon-link"></span></a>ProcEx</h2>
+
+<p><a href="https://scrutinizer-ci.com/g/CoreProc/procurement-web/?branch=master"><img src="https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a> <a href="https://scrutinizer-ci.com/g/CoreProc/procurement-web/build-status/master"><img src="https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/build.png?b=master" alt="Build Status"></a> </p>
+
+<p><a href="https://procex.coreproc.ph">ProcEx (Procurement Explorer)</a> is the most awesome way to browse and analyze PHILGEPS data on bids and stuff.  </p>
+
+<h2>
+<a id="web-api" class="anchor" href="#web-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>WEB API</h2>
+
+<p>ProcEx API base url is <strong>/api</strong></p>
+
+<h3>
+<a id="get-search" class="anchor" href="#get-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /search</h3>
+
+<p>Base URL for search</p>
+
+<h4>
+<a id="get-item" class="anchor" href="#get-item" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET {item}</h4>
+
+<p>Fetch a specific bid item.</p>
+
+<p><a href="https://procex.coreproc.ph/api/search/item/816783">https://procex.coreproc.ph/api/search/item/816783</a></p>
+
+<h4>
+<a id="get-query" class="anchor" href="#get-query" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET query</h4>
+
+<p>Fetch a collection of bid items from specific parameters</p>
+
+<ul>
+<li>
+<strong>classifications[]</strong> - array[string] </li>
+<li>
+<strong>areas[]</strong> - array[string] </li>
+<li>
+<strong>categories[]</strong> - array[string] </li>
+<li>
+<strong>year</strong> - string (optional)</li>
+</ul>
+
+<p><a href="https://procex.coreproc.ph/api/search/query?areas%5B%5D=Abra&amp;areas%5B%5D=Metro">https://procex.coreproc.ph/api/search/query?areas[]=Abra&amp;areas[]=Metro</a> Manila&amp;year=2006</p>
+
+<h4>
+<a id="get-from-location" class="anchor" href="#get-from-location" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET from-location</h4>
+
+<p>Fetch collection of bid items from province</p>
+
+<ul>
+<li>
+<strong>province</strong> - string</li>
+<li>
+<strong>year</strong> - string (optional) </li>
+</ul>
+
+<p><a href="https://procex.coreproc.ph/api/search/from-location?province=Abra&amp;year=2009">https://procex.coreproc.ph/api/search/from-location?province=Abra&amp;year=2009</a></p>
+
+<h3>
+<a id="get-areas" class="anchor" href="#get-areas" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /areas</h3>
+
+<p>Fetch list of Areas</p>
+
+<p><a href="https://procex.coreproc.ph/api/areas">https://procex.coreproc.ph/api/areas</a></p>
+
+<h3>
+<a id="get-classifications" class="anchor" href="#get-classifications" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /classifications</h3>
+
+<p>Fetch list of Classifications</p>
+
+<p><a href="https://procex.coreproc.ph/api/classifications">https://procex.coreproc.ph/api/classifications</a></p>
+
+<h3>
+<a id="get-categories" class="anchor" href="#get-categories" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /categories</h3>
+
+<p>Fetch list of Categories</p>
+
+<p><a href="https://procex.coreproc.ph/api/categories">https://procex.coreproc.ph/api/categories</a></p>
+
+<h3>
+<a id="get-notice-types" class="anchor" href="#get-notice-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /notice-types</h3>
+
+<p>Fetch list of Notice Types</p>
+
+<p><a href="https://procex.coreproc.ph/api/notice-types">https://procex.coreproc.ph/api/notice-types</a></p>
+
+<h3>
+<a id="get-utility" class="anchor" href="#get-utility" aria-hidden="true"><span class="octicon octicon-link"></span></a>GET /utility</h3>
+
+<p>Base URL for utilities</p>
+
+<h4>
+<a id="post-lookup-province" class="anchor" href="#post-lookup-province" aria-hidden="true"><span class="octicon octicon-link"></span></a>POST lookup-province</h4>
+
+<p>Lookup your province based on lat-long data</p>
+
+<ul>
+<li>string <strong>lat</strong>
+</li>
+<li>string <strong>long</strong>
+</li>
+</ul>
+
+<h2>
+<a id="sms" class="anchor" href="#sms" aria-hidden="true"><span class="octicon octicon-link"></span></a>SMS</h2>
+
+<p>Access the ProcEx API from your GSM phone by texting the keyword INFO to <strong>21589393</strong> and replying YES.</p>
+
+<h3>
+<a id="keywords" class="anchor" href="#keywords" aria-hidden="true"><span class="octicon octicon-link"></span></a>Keywords</h3>
+
+<p>All keywords are prefixed with the string <strong>PROCEX</strong></p>
+
+<h4>
+<a id="help" class="anchor" href="#help" aria-hidden="true"><span class="octicon octicon-link"></span></a>HELP</h4>
+
+<p>Get quick help on keywords and stuff.</p>
+
+<h4>
+<a id="inquire" class="anchor" href="#inquire" aria-hidden="true"><span class="octicon octicon-link"></span></a>INQUIRE</h4>
+
+<p>Inquire about the summary of information on bids at your location</p>
+
+<pre><code>PROCEX INQUIRE
+</code></pre>
+
+<h4>
+<a id="search" class="anchor" href="#search" aria-hidden="true"><span class="octicon octicon-link"></span></a>SEARCH</h4>
+
+<p>Get a summary of bids using specialty keywords and filters</p>
+
+<h5>
+<a id="classification" class="anchor" href="#classification" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLASSIFICATION</h5>
+
+<p>Get the complete list of classification names <a href="https://procex.coreproc.ph/api/classifications">here</a></p>
+
+<p>Syntax</p>
+
+<pre><code>PROCEX SEARCH CLASSIFICATION &lt;NAME&gt; &lt;YEAR [optional]&gt;
+</code></pre>
+
+<p>Example</p>
+
+<pre><code>PROCEX SEARCH CLASSIFICATION GOODS 2009
+</code></pre>
+
+<h5>
+<a id="area" class="anchor" href="#area" aria-hidden="true"><span class="octicon octicon-link"></span></a>AREA</h5>
+
+<p>Get the complete list of areas <a href="https://procex.coreproc.ph/api/areas">here</a></p>
+
+<p>Syntax</p>
+
+<pre><code>PROCEX SEARCH AREA &lt;NAME&gt; &lt;YEAR [optional]&gt;
+</code></pre>
+
+<p>Example</p>
+
+<pre><code>PROCEX SEARCH AREA CAVITE 2003
+</code></pre>
+
+<h5>
+<a id="category" class="anchor" href="#category" aria-hidden="true"><span class="octicon octicon-link"></span></a>CATEGORY</h5>
+
+<p>Get the complete list of category names <a href="https://procex.coreproc.ph/api/categories">here</a></p>
+
+<p>Syntax</p>
+
+<pre><code>PROCEX SEARCH CATEGORY &lt;NAME&gt; &lt;YEAR [optional]&gt;
+</code></pre>
+
+<p>Example</p>
+
+<pre><code>PROCEX SEARCH CATEGORY AGRICULTURE 
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>ProcEx is open-sourced software licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/CoreProc">CoreProc</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

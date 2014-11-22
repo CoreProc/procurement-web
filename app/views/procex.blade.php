@@ -29,7 +29,7 @@
 
             <!-- <button class="close">&times;</button> -->
 
-            <h3 ng-bind="card.name"></h3>
+            <h2 ng-bind="card.name"></h2>
             <h4 ng-bind="card.budget"></h4>
         </md-card>
     </div>

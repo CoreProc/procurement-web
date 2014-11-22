@@ -78,9 +78,11 @@ class GlobeLabsController extends BaseController
 
         // ok, now that we have the message, we can parse
 
-        $smsReciever = new SmsReceiver($sms);
-
         Log::info("Received message {$sms->message}");
+
+        $smsReciever = new SmsReceiver($sms);
+        $smsReciever->received($sms->message);
+
     }
 
 } 

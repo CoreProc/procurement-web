@@ -107,7 +107,7 @@ class SmsReceiver
                     $total_spent_amount =
                         Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
                             $q->whereLocation($query);
-                        })->where('publish_date', '>=', $year . '-01-01T00:00:00'))->sum('contract_amt');
+                        })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
 
                     break;
                 case 'category':
@@ -115,7 +115,7 @@ class SmsReceiver
 
                     $total_spent_amount =
                         Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year .
-                            '-01-01T00:00:00'))
+                            '-01-01T00:00:00')->lists('ref_id'))
                             ->sum('contract_amt');
 
                     break;
@@ -204,7 +204,7 @@ class SmsReceiver
         $total_spent_amount =
             Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->where('publish_date', '>=', $year . '-01-01T00:00:00'))->sum('contract_amt');
+            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
 
         if (isset($data)) {
             $total_projects = $data->count();

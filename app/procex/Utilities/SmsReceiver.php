@@ -70,6 +70,8 @@ class SmsReceiver
 
         $smsService = $globeLabs->smsService();
 
+        $smsService->setDebug(true);
+
         // we try to get the access token.....
         $smsService->setAccessToken($this->accessToken);
         $smsService->setMobileNumber($this->sms->sender->get());

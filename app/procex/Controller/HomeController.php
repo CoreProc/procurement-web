@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 
     public function index()
     {
-        $org = Organization::limit(5)->get();
+        return Organization::where('org_id','=', '31639')->limit(5)->get();
     }
     
     public function explore()

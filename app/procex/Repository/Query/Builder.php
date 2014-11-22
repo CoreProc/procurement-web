@@ -34,11 +34,12 @@ class Builder extends EloquentBuilder
 
         $request = new Request($statement, true);
 
+
         if ($request->execute()) {
-            echo $request->data;
-        } else {
-            var_dump($request->errors);
+            return $request->data;
         }
+
+        return null;
         //return $this->connection->select($this->toSql(), $this->getBindings());
     }
 

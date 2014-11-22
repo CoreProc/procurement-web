@@ -61,9 +61,9 @@ class Search extends \Controller
 
         $results = BidInformation::whereHas('projectLocation', function($q) use ($province) {
             $q->whereLocation($province);
-        })->get();
+        })->paginate(10);
 
-        return \Response::api()->withCollection($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
+        return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
     }
 
 }

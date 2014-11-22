@@ -60,6 +60,7 @@ class SmsReceiver
                 $this->composeHelpMessage();
                 break;
             case 'inquire':
+                $this->composeInquireMessage();
                 break;
             case 'search':
                 $this->composeSearchMessage($keywords);
@@ -169,11 +170,19 @@ class SmsReceiver
 
     private function composeInquireMessage()
     {
+        Log::info('Trying to get location of ' . $this->sms->sender->get());
         // first locate the user
         $globeLabs = GlobeLabs::service(Config::get('procex.globelabs_api.appId'), Config::get('procex.globelabs_api.appSecret'));
 
         $locationService = $globeLabs->locationService();
         $location = $locationService->locate($this->accessToken, $this->sms->sender->get(), 100);
+
+        if (empty($location)) {
+            Log::error('Could not get location of subscriber ' . $this->sms->sender->get());
+            return;
+        }
+
+        Log::info('Location found: ' . $location->latitude . ' ' . $location->longitude);
 
         $adapter = new CurlHttpAdapter();
         $provider = new OpenStreetMapProvider($adapter);
@@ -197,8 +206,6 @@ class SmsReceiver
                 $q->whereLocation($province);
             })->where('publish_date', '>=', $year . '-01-01T00:00:00'))->sum('contract_amt');
 
-        $message = '';
-
         if (isset($data)) {
             $total_projects = $data->count();
             $total_approved_projects = $data->whereTenderStatus('Awarded')->count();
@@ -209,11 +216,14 @@ class SmsReceiver
 - # Apprv Prj: ' . $total_approved_projects . '
 - Amt Spent: ' . $total_spent_amount . '
 - Bdgt: ' . $total_budget_amount;
+
+            Log::info('Sending message: ' . $message);
+
+            $this->sendMessage($message);
+            return;
         }
 
-        if ( ! empty($message)) {
-            $this->sendMessage($message);
-        }
+        Log::error('No message found');
 
     }
 

@@ -1,13 +1,9 @@
 (function(angular) {
     angular
         .module('app', [
-            'ngSanitize',
-            'ngAnimate',
-
-            'pascalprecht.translate',
+            'ngMaterial',
 
             'restangular',
-            'ui.router',
 
             'app.services',
             'app.directives',

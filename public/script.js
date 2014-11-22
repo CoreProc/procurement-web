@@ -1,11 +1,10 @@
-// @prepros-append "lib/logic/jquery/js/jquery.js"
-// @prepros-append "lib/ui/styles/bootstrap/js/bootstrap.js"
-// @prepros-append "lib/logic/lodash/js/lodash.js"
-// @prepros-append "lib/logic/angular/js/angular.js"
-// @prepros-append "lib/logic/angular/js/angular-animate.js"
-// @prepros-append "lib/logic/angular/js/angular-sanitize.js"
-// @prepros-append "lib/logic/angular-bootstrap/js/ui-bootstrap-tpls-0.12.0.js"
-// @prepros-append "lib/logic/angular-translate/js/angular-translate.js"
-// @prepros-append "lib/logic/angular-ui-router/js/angular-ui-router.js"
-// @prepros-append "lib/logic/restangular/js/restangular.js"
-// @prepros-append "app/logic/core-angular/js/core.js"
+// @prepros-append bower_components/angular/angular.js
+// @prepros-append bower_components/angular-animate/angular-animate.js
+// @prepros-append bower_components/angular-aria/angular-aria.js
+// @prepros-append bower_components/angular-material/angular-material.js
+// @prepros-append bower_components/hammerjs/hammer.js
+
+// @prepros-append bower_components/lodash/dist/lodash.js
+// @prepros-append bower_components/restangular/dist/restangular.js
+
+// @prepros-append app/logic/core-angular/js/core.js

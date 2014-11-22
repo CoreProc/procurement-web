@@ -11,6 +11,9 @@
 |
 */
 
+Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
+Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
+
 Route::get('/', 'Coreproc\Procex\Controller\HomeController@index');
 
 Route::get('/explore', 'Coreproc\Procex\Controller\HomeController@explore');

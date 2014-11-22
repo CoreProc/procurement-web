@@ -31,7 +31,7 @@ class HomeController extends BaseController {
     
     public function explore()
     {
-		return \View::make('hello');
+		return \View::make('procex.explore');
     }
 
 }

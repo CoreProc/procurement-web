@@ -18,7 +18,7 @@ class BidInformation extends ProcurementModel
 
     public function awards()
     {
-        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id', 'ref_id');
+        return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id', 'ref_no');
     }
 
     public function procuringEntity()

@@ -26,29 +26,32 @@ class Search extends \Controller
             if (!$results->execute()) {
                 return \Response::api()->errorNotFound();
             }
-        } else {
-            $results = BidInformation::has('bidLineItems')->paginate(10);
 
-//            $cost = null;
-//
-//            $temp = BidInformation::has('awards')->lists('id');
-//
-//            $cost = Award::whereIn('ref_id', $temp)->sum('budget');
-//
-//            $meta = [
-//                'total_budget_amount'     => BidInformation::sum('approved_budget'),
-//                'total_spent_amount'      => $cost,
-//                'total_projects'          => BidInformation::all()->count(),
-//                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')
-//
-//            ];
+            $results = $results->data;
+        } else {
+
+            $results = BidInformation::paginate(\Config::get('procex.request_limit'));
+
+            $cost = null;
+
+            $temp = BidInformation::has('awards')->lists('ref_id');
+
+            $cost = Award::whereIn('ref_id', $temp)->sum('budget');
+
+            $meta = [
+                'total_budget_amount'     => BidInformation::sum('approved_budget'),
+                'total_spent_amount'      => $cost,
+                'total_projects'          => BidInformation::all()->count(),
+                'total_approved_projects' => BidInformation::whereTenderStatus('Awarded')
+
+            ];
         }
 
-        return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
+        return \Response::api()->withPaginator($results, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
-    public function getItem($ref_no) {
-        $result = BidInformation::where('ref_id', '=', $ref_no)->first();
+    public function getItem($ref_id) {
+        $result = BidInformation::where('ref_id', '=', $ref_id)->first();
 
         if (!empty($result)) {
             return \Response::api()->withItem($result, new \Coreproc\Procex\Model\Transformer\BidInformation, 'data');
@@ -59,18 +62,21 @@ class Search extends \Controller
 
     public function getFromLocation($province) {
 
-        $results = BidInformation::whereHas('projectLocation', function($q) use ($province) {
+        $results = BidInformation::whereHas('projectLocation', function ($q) use ($province) {
             $q->whereLocation($province);
         });
 
+        $temp = $results;
+
         $meta = [
             'total_budget_amount'     => $results->sum('approved_budget'),
-            'total_spent_amount'      => '',
+            'total_spent_amount'      => $results,
             'total_projects'          => $results->count(),
-            'total_approved_projects' => $results->whereTenderStatus('Awarded')->count()
+            'total_approved_projects' => $temp->whereTenderStatus('Awarded')->count()
         ];
 
-        return \Response::api()->withPaginator($results->paginate(10), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
+        return \Response::api()
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
 }

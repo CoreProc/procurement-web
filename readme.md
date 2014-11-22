@@ -1,5 +1,7 @@
 ## ProcEx
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CoreProc/procurement-web/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CoreProc/procurement-web/build-status/master) 
+
 [ProcEx (Procurement Explorer)](https://procex.coreproc.ph) is the most awesome way to browse and analyze PHILGEPS data on bids and stuff.  
 
 ## WEB API 

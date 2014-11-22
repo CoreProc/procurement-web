@@ -14,7 +14,7 @@
 Blade::setContentTags('<%', '%>');        // for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>');    // for escaped data
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/', 'after' => 'cached'], function () {
     Route::get('test', function () {
         $province = 'Abra';
         $temp =  Coreproc\Procex\Model\BidInformation::whereHas('projectLocation', function ($q) use ($province) {

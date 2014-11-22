@@ -63,7 +63,7 @@ class Search extends \Controller
 
         $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
             $q->whereLocation($province);
-        })->where('publish_date', '>=', '2008-01-01T00:00:00');
+        })->where('publish_date', '>=', $year.'-01-01T00:00:00');
 
         $meta = [
             'total_budget_amount'     => $results->sum('approved_budget'),

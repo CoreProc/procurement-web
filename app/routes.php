@@ -16,7 +16,7 @@ Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::group(['prefix' => '/'], function() {
     Route::get('testquery', function() {
-        return Coreproc\Procex\Model\BidInformation::groupBy('notice_type')->lists('notice_type');
+        return Coreproc\Procex\Model\BidInformation::groupBy('trade_agreement')->lists('trade_agreement');
     });
 
     Route::group(['prefix' => 'api'] , function() {

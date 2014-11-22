@@ -34,7 +34,6 @@ class Builder extends EloquentBuilder
 
         $request = new Request($statement, true);
 
-
         if ($request->execute()) {
             return $request->data;
         }

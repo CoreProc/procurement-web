@@ -12,16 +12,12 @@ class BidInformation extends ProcurementModel
         return $this->hasMany('Coreproc\Procex\Model\BidLineItem', 'ref_id');
     }
 
-    public function awards() {
+    public function award() {
         return $this->hasMany('Coreproc\Procex\Model\Award', 'ref_id');
     }
 
-    public function organization() {
-        return $this->belongsTo('Coreproc\Procex\Model\Organization', 'org_id');
-    }
-
     public function procuringEntity() {
-        return $this->belongsTo('Coreproc\Procex\Model\Organization', 'procuring_entity_org_id');
+        return $this->belongsTo('Coreproc\Procex\Model\Organization', 'procuring_entity_org_id', 'org_id');
     }
 
     public function clientAgency() {

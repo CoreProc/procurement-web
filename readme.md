@@ -4,11 +4,23 @@
 
 ## WEB API 
 
-ProcEx API
+ProcEx API base url is **/api**
  
-* search
+### GET /search
+* (string) **resource_id**
+* (array[string]) **filters[]**
 
+### GET /areas
 
+### GET /classifications
+
+### GET /categories
+
+### GET /notice-types
+
+### GET /utility
+
+#### GET lookup-province/   
 
 ## SMS
 
@@ -16,4 +28,4 @@ Access the ProcEx API from your GSM phone by texting the keyword INFO to [Applic
 
 ### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+ProcEx is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 
     public function index()
     {
-        $org = Organization::has('bidInformations')->get();
+        $org = Organization::limit(5)->get();
     }
     
     public function explore()

@@ -32,7 +32,7 @@ html {
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility!important;
-    font-family: sans-serif;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
 }
 
 /*

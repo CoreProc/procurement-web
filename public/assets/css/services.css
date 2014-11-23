@@ -34,7 +34,6 @@ html {
     text-rendering: optimizeLegibility!important;
     font-family: sans-serif;
 }
-
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
@@ -108,15 +107,52 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+header {
+    background: #000;
+}
+p {
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    line-height: 20px;
+    font-size: 15px!important;
+}
 .title {
+
     color: #fff;
     font-weight: bold;
-    font-size: 80px;
+    font-size: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-bottom: 0;
-    text-align: center;
     /* Fallback for web browsers that doesn't support RGBa */
     font-family: 'Oswald', sans-serif;
 }
+.fa-mobile-phone {
+    font-size: 25px;
+}
+.content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.how-to h4 {
+    font-family: 'Oswald', sans-serif;
+}
+.how-to h6 {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.how-to .example {
+    margin-top: 10px;
+}
+.bordered-info {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    padding: 5px 15px;
+}
+
+
+
+
 
 
 /* ==========================================================================

@@ -46,7 +46,7 @@
                     <div class="map-marker"><i class="fa fa-map-marker"></i></div>
 
                     <div class="row">
-                        <div class="small-6 columns button-container-1"><a href="#" class="button large get-started-btn">Get Started</a></div>
+                        <div class="small-6 columns button-container-1"><a href="{{ URL::action('Coreproc\Procex\Controller\HomeController@explore') }}" class="button large get-started-btn">Get Started</a></div>
                         <div class="small-6 columns button-container-2"><a href="#" class="button large services-btn">Our services</a></div>
                     </div>
 

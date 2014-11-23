@@ -4,7 +4,9 @@
 namespace Coreproc\Procex\Model\Transformer;
 
 
-use Carbon\Carbon;
+use Geocoder\Geocoder;
+use Geocoder\HttpAdapter\CurlHttpAdapter;
+use Geocoder\Provider\OpenStreetMapProvider;
 use League\Fractal\TransformerAbstract;
 
 class BidInformation extends TransformerAbstract
@@ -29,7 +31,7 @@ class BidInformation extends TransformerAbstract
             'pre_bid_date'         => $bidInformation->pre_bid_date,
             'pre_bid_venue'        => $bidInformation->pre_bid_venue,
             'procuring_entity_org' => $bidInformation->procuringEntity,
-            'publish_date'         => $bidInformation->publish_date ,
+            'publish_date'         => $bidInformation->publish_date,
             'closing_date'         => $bidInformation->closing_date,
             'contact'              => [
                 'person'  => $bidInformation->contact_person,
@@ -40,7 +42,20 @@ class BidInformation extends TransformerAbstract
                 'point'    => $bidInformation->collection_point
             ],
             'award_details'        => $bidInformation->awards,
-            'project_location'     => $bidInformation->projectLocation
+            'project_location'     => $bidInformation->projectLocation,
+            'coordinates'          => $this->geocode($bidInformation->projectLocation->location)
         ];
+    }
+
+    private function geocode($location) {
+        $adapter = new CurlHttpAdapter();
+        $provider = new OpenStreetMapProvider($adapter);
+
+        $geocoder = new Geocoder($provider);
+
+        $location = $location . ' Philippines';
+        $result = $geocoder->geocode($location);
+
+        return $result->getBounds();
     }
 } 

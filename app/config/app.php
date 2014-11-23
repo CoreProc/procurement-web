@@ -124,8 +124,8 @@ return array(
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Toin0u\Geotools\GeotoolsServiceProvider',
         'EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider',
-        'Barryvdh\HttpCache\ServiceProvider',
         'Barryvdh\Cors\CorsServiceProvider',
+        'Flatten\FlattenServiceProvider',
     ),
 
     /*
@@ -192,8 +192,8 @@ return array(
         'URL'               => 'Illuminate\Support\Facades\URL',
         'Validator'         => 'Illuminate\Support\Facades\Validator',
         'View'              => 'Illuminate\Support\Facades\View',
-
         'Geotools'          => 'Toin0u\Geotools\GeotoolsFacade',
+        'Flatten'           => 'Flatten\Facades\Flatten',
     ),
 
 );

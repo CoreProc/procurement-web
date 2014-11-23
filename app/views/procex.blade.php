@@ -8,10 +8,8 @@
 </head>
 <body layout="row" layout-fill ng-controller="RootCtrl as ctrl">
 
-<button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': ((ctrl.filtersOpen ? 365 : 0) + 32) + 'px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: fixed; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
-
 <div layout-fill class="overlay resultsOverlay" style="padding-top: 56px">
-    <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
+    <!-- <h2>Search returned {{ ctrl.searchResults.length + (ctrl.searchResults.length == 1 ? ' result' : ' results') }}</h2> -->
     <!--
     <div class="panel panel-bidList" style="height: 48px">
         <select>
@@ -29,22 +27,23 @@
     </div>
     -->
     <div class="panel panel-searchInput">
-        <input type="text" ng-model="search.query" ng-disabled="cardTest.length < 3" placeholder="{{ cardTest.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
+        <input type="text" ng-model="search.query" ng-disabled="ctrl.searchResults.length < 3" placeholder="{{ ctrl.searchResults.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
     </div>
     <div class="panel panel-searchResults">
-        <md-card ng-repeat="card in cardTest | filter: search.query" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
+        <md-card ng-repeat="card in ctrl.searchResults | filter: search.query" ng-click="ctrl.showDetails(card)" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
 
             <!-- <button class="close">&times;</button> -->
 
             <h2 ng-bind="card.name"></h2>
-            <h4 ng-bind="card.budget"></h4>
+            <h4 ng-bind="card.approved_budget | currency: 'Php'"></h4>
+            <h5 ng-bind="card.notice_type"></h5>
         </md-card>
     </div>
 </div>
 
 </div>
 
-<md-sidenav is-locked-open="ctrl.filtersOpen" component-id="filters" style="width: 500px">
+<md-sidenav is-locked-open="ctrl.filtersOpen" component-id="filters" style="width: 350px; min-width: 350px">
     <div layout="vertical" layout-fill style="height: 100%">
         <md-toolbar class="md-default-theme">
             <div class="md-toolbar-tools">
@@ -95,16 +94,50 @@
 </md-sidenav>
 
 <md-content layout="vertical" layout-fill>
+    <div class="header">
+        <div flex></div>
+        <div class="panel panel-bidList">
+            <select>
+                <option>asdfasdf</option>
+                <option>asdfasdf</option>
+                <option>asdfasdf</option>
+                <option>asdfasdf</option>
+            </select>
+        </div>
+    </div>
     <main flex>
-        <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers" event-broadcast="mapConfig.events"></leaflet>
+        <button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': '32px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: absolute; left: 0; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
+        <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers"></leaflet>
     </main>
 </md-content>
 
-<md-sidenav class="md-sidenav-right" is-open="true" component-id="info">
-<hgroup class="info-headings">
-<h1 ng-bind="selected.name">Title</h1>
-<h2 ng-bind="selected.price">Php 1,000,000.00</h2>
-</hgroup>
+<md-sidenav class="md-sidenav-left" component-id="info" style="width: 500px; max-width: 80%; z-index: 1001">
+<div layout="vertical" layout-fill>
+    <hgroup class="info-headings">
+        <h1 ng-bind="ctrl.selectedCard.name"></h1>
+        <h2 ng-bind="ctrl.selectedCard.approved_budget | currency: 'Php'"></h2>
+    </hgroup>
+    <div flex>
+        <div layout-fill style="height: 100%">
+            <md-content layout-fill scroll-y class="panel panel-info" style="height: 100%">
+                <strong>Description</strong>
+                <p ng-bind="ctrl.selectedCard.description"></p>
+
+                <strong>Procuring organization</strong>
+                <p ng-bind="ctrl.selectedCard.procuring_entity_org.org_name"></p>
+
+                <strong>Location</strong>
+                <p ng-bind="ctrl.selectedCard.project_location.location"></p>
+
+                <strong>Tender Status</strong>
+                <p ng-bind="ctrl.selectedCard.tender_status"></p>
+
+                <strong>Date</strong>
+                <p ng-bind="(ctrl.selectedCard.project_location.modified_date | date) + '&ndash;' + (ctrl.selectedCard.closing_date | date)"></p>
+            </md-content>
+        </div>
+    </div>
+</div>
 </md-sidenav>
 
 </div>

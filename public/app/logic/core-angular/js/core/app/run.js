@@ -19,12 +19,12 @@
                     defaults: {
                         scrollWheelZoom: true
                     },
-                    center: { lat: 0, lng: 0, zoom: 5 },
+                    center: { lat: 12.640338306846802, lng: 120.84960937499999, zoom: 5 },
                     markers: {
                         center: {
-                            lat: 12.640338306846802,
-                            lng: 120.84960937499999,
-                            focus: true,
+                            lat: 0,
+                            lng: 0,
+                            focus: false,
                             draggable: false
                         }
                     }

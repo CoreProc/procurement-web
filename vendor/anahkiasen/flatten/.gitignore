@@ -1,0 +1,6 @@
+# Dependencies
+composer.lock
+vendor
+
+# Testing
+storage

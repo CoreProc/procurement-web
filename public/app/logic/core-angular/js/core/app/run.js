@@ -30,21 +30,6 @@
                     }
                 };
 
-                $rootScope.tenderStatuses = [
-                    "Cancelled",
-                    "In-Preparation",
-                    "Closed",
-                    "Shortlisted",
-                    "Awarded",
-                    "Failed"
-                ] ;
-
-                $rootScope.cardTest = [];
-
-                for(var i = 0; i < 99; i++) {
-                    $rootScope.cardTest.push({ name: 'Hello', budget: 23423432 });
-                }
-
                 angular.element(function() {
                     angular.element(window).resize();
                 });

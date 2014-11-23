@@ -125,6 +125,7 @@ return array(
         'Toin0u\Geotools\GeotoolsServiceProvider',
         'EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider',
         'Barryvdh\Cors\CorsServiceProvider',
+        'Barryvdh\HttpCache\ServiceProvider',
         'Flatten\FlattenServiceProvider',
     ),
 

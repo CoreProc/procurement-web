@@ -12,6 +12,7 @@
         "toin0u/geotools-laravel": "0.2.*",
         "ellipsesynergie/api-response": "0.7.*",
         "anahkiasen/flatten": "0.5.1",
+        "barryvdh/laravel-httpcache": "0.1.x",
 		"barryvdh/laravel-cors": "0.2.x"
 	},
 	"autoload": {

@@ -2,7 +2,11 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CoreProc/procurement-web/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/CoreProc/procurement-web/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CoreProc/procurement-web/build-status/master) 
 
-[ProcEx (Procurement Explorer)](https://procex.coreproc.ph) is the most awesome way to browse and analyze PHILGEPS data on bids and stuff.  
+[ProcEx (Procurement Explorer)](https://procex.coreproc.ph) is the most awesome way to browse and analyze PHILGEPS data on bids and stuff.
+
+On a serious note, ProcEx allows the average Filipino citizen to browse through the regions in the Philippines and look at the budget alloted and spent on Government procurement projects. They will also be able to see how many projects are up for bidding, the total number of approved projects, and the total amount spent.
+
+We are hoping that this project will increase government transparency and awareness on procurement projects.
 
 ## WEB API 
 

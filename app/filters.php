@@ -82,3 +82,7 @@ Route::filter('csrf', function () {
         throw new Illuminate\Session\TokenMismatchException;
     }
 });
+
+Route::filter('cache', function($route, $request, $response, $age=1000){
+    $response->setTtl($age);
+});

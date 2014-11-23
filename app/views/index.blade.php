@@ -65,9 +65,9 @@
                     </div>
 
                     <div class="social">
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-git"></i>
+                        <a href="https://www.facebook.com/pages/PhilGEPS/294475860570501" target="new"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/PhilGEPSTweets" target="new"><i class="fa fa-twitter"></i></a>
+                        <a href="http://coreproc.github.io/procurement-web" target="new"><i class="fa fa-git"></i></a>
                     </div>
 
                     <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>

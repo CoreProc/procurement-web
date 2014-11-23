@@ -32,27 +32,27 @@
     <div class="content">
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4 class="blue"><i class="fa fa-mobile-phone"></i> SMS Services</h4>
+                <h4 class="red"><i class="fa fa-mobile-phone"></i> SMS Services</h4>
                 <p>Access the ProcEx API from your GSM phone by texting the keyword INFO to 21589393, then reply YES (FREE of charge.)</p>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4 class="blue"><i class="fa fa-key"></i> Keywords</h4>
+                <h4 class="red"><i class="fa fa-key"></i> Keywords</h4>
                 <p>All keywords are prefixed with the string PROCEX.</p>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>Help</h4>
+                <h5>Help</h5>
                 <p>Get quick help on keywords and stuff.</p>
             </div>
         </div>
         <div class="row">
-            <div class="large-12 columns how-to">
-                <h4>INQUIRE</h4>
-                <p>Inquire about the summary of information on bids at your location</p>
-                <div class="bordered-info red">
+            <div class="large-12 columns how-to inquire">
+                <h5>INQUIRE</h5>
+                <p>Inquire about the summary of information on bids at your location.</p>
+                <div class="bordered-info orange">
                     PROCEX INQUIRE
                 </div>
             </div>
@@ -60,52 +60,60 @@
         <br/>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>SEARCH</h4>
-                <p>Get a summary of bids using specialty keywords and filters</p>
+                <h5>SEARCH</h5>
+                <p>Get a summary of bids using specialty keywords and filters.</p>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>Classification</h4>
-                <p>Get the complete list of classification names <a href="https://procex.coreproc.ph/api/classifications">here</a></p>
-                <h6>Syntax</h6>
-                <div class="bordered-info red">
+                <h5>Classification</h5>
+                <p>Get the complete list of classification names <a href="https://procex.coreproc.ph/api/classifications">here.</a></p>
+                <h6>Syntax:</h6>
+                <div class="bordered-info orange">
                     PROCEX SEARCH CLASSIFICATION &lt;NAME&gt; &lt;YEAR [optional]&gt;
                 </div>
-                <h6 class="example">Example</h6>
-                <div class="bordered-info red">
-                    PROCEX SEARCH CLASSIFICATION GOODS
+                <h6 class="example">Example:</h6>
+                <div class="bordered-info orange">
+                    PROCEX SEARCH CLASSIFICATION GOODS 2009
                 </div>
             </div>
         </div>
+        <br/>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>Area</h4>
-                <p>Get the complete list of areas <a href="https://procex.coreproc.ph/api/areas">here</a></p>
-                <h6>Syntax</h6>
-                <div class="bordered-info red">
+                <h5>Area</h5>
+                <p>Get the complete list of areas <a href="https://procex.coreproc.ph/api/areas">here.</a></p>
+                <h6>Syntax:</h6>
+                <div class="bordered-info orange">
                     PROCEX SEARCH AREA &lt;NAME&gt; &lt;YEAR [optional]&gt;
                 </div>
-                <h6 class="example">Example</h6>
-                <div class="bordered-info red">
+                <h6 class="example">Example:</h6>
+                <div class="bordered-info orange">
                     PROCEX SEARCH AREA CAVITE 2009
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>Category</h4>
-                <p>Get the complete list of category names <a href="https://procex.coreproc.ph/api/categories">here</a></p>
-                <h6>Syntax</h6>
-                <div class="bordered-info red">
+                <h4 class="category">Category</h4>
+                <p>Get the complete list of category names <a href="https://procex.coreproc.ph/api/categories">here.</a></p>
+                <h6>Syntax:</h6>
+                <div class="bordered-info orange">
                     PROCEX SEARCH CATEGORY &lt;NAME&gt; &lt;YEAR [optional]&gt;
                 </div>
-                <h6 class="example">Example</h6>
-                <div class="bordered-info red">
-                    PROCEX SEARCH CATEGORY VEHICLE
+                <h6 class="example">Example:</h6>
+                <div class="bordered-info orange">
+                    PROCEX SEARCH CATEGORY AGRICULTURE
                 </div>
             </div>
         </div>
+        <br/>
+        <div class="row">
+            <div class="large-12 columns go-back">
+                <a href="<% url() %>"><h5 class="category blue">Go back</h5></a>
+            </div>
+        </div>
+
     </div>
 </body>
 

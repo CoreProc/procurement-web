@@ -16,6 +16,9 @@
 .red {
     color: #f22727;
 }
+.orange {
+    color: rgb(202, 104, 34);
+}
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -133,13 +136,22 @@ p {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
+.inquire p {
+    margin-bottom: 5px;
+}
 .how-to h4 {
     font-family: 'Oswald', sans-serif;
+}
+.how-to h5 {
+    font-weight: bold;
+    margin-bottom: 0;
 }
 .how-to h6 {
     font-size: 13px;
     margin-bottom: 5px;
+}
+.how-to .category {
+    margin-top: 20px;
 }
 .how-to .example {
     margin-top: 10px;
@@ -148,8 +160,11 @@ p {
     border: 1px solid #ddd;
     font-size: 12px;
     padding: 5px 15px;
+    margin-bottom: 5px;
 }
-
+.go-back a {
+    text-decoration: underline;
+}
 
 
 

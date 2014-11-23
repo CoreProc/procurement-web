@@ -123,7 +123,7 @@ class Search extends \Controller
         ];
 
         return \Response::api()
-            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta)->setTtl(3600);
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
 
     }
 
@@ -195,6 +195,6 @@ class Search extends \Controller
         ];
 
         return \Response::api()
-            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta)->setTtl(3600);
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 }

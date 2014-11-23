@@ -173,6 +173,9 @@
             var selectedCategories = _.pluck(_.where(vm.categories, { selected: true }), 'name');
             var selectedClassifications = _.pluck(_.where(vm.classifications, { selected: true }), 'name');
 
+            if(!(selectedProvinces.length > 0 || selectedCategories.length > 0 || selectedClassifications.length > 0))
+                return;
+
             SearchService
                 .query({
                     'areas[]': selectedProvinces,
@@ -181,7 +184,7 @@
                     // TODO year
                 })
                 .then(function(response) {
-                    console.log(response);
+                    vm.searchResults = response.data;
                 });
         };
 

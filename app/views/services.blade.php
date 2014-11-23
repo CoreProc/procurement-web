@@ -60,14 +60,14 @@
         <br/>
         <div class="row">
             <div class="large-12 columns how-to">
-                <h4>Search</h4>
+                <h4>SEARCH</h4>
                 <p>Get a summary of bids using specialty keywords and filters</p>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns how-to">
                 <h4>Classification</h4>
-                <p>Get the complete list of classification names</p>
+                <p>Get the complete list of classification names <a href="https://procex.coreproc.ph/api/classifications">here</a></p>
                 <h6>Syntax</h6>
                 <div class="bordered-info red">
                     PROCEX SEARCH CLASSIFICATION &lt;NAME&gt; &lt;YEAR [optional]&gt;
@@ -75,6 +75,34 @@
                 <h6 class="example">Example</h6>
                 <div class="bordered-info red">
                     PROCEX SEARCH CATEGORY AGRICULTURE
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Area</h4>
+                <p>Get the complete list of areas <a href="https://procex.coreproc.ph/api/areas">here</a></p>
+                <h6>Syntax</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH AREA &lt;NAME&gt; &lt;YEAR [optional]&gt;
+                </div>
+                <h6 class="example">Example</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH AREA CAVITE 2009
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Category</h4>
+                <p>Get the complete list of category names <a href="https://procex.coreproc.ph/api/categories">here</a></p>
+                <h6>Syntax</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH CATEGORY &lt;NAME&gt; &lt;YEAR [optional]&gt;
+                </div>
+                <h6 class="example">Example</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH AREA VEHICLE
                 </div>
             </div>
         </div>

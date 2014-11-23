@@ -106,7 +106,7 @@
         </div>
     </div>
     <main flex>
-        <button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': '32px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: absolute; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
+        <button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': '32px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: absolute; left: 0; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
         <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers"></leaflet>
     </main>
 </md-content>

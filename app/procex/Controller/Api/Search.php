@@ -168,7 +168,7 @@ class Search extends \Controller
     {
         $data = \Input::json('data');
         $province = $data['province'];
-        $category = ( ! empty($data['categories'])) ? $data['categories'] : null;
+        $category = ( ! empty($data['category'])) ? $data['category'] : null;
         $year = ( ! empty($data['year'])) ? $data['year'] : null;
 
         if (empty($year)) {

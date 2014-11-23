@@ -74,7 +74,7 @@
                 </div>
                 <h6 class="example">Example</h6>
                 <div class="bordered-info red">
-                    PROCEX SEARCH CATEGORY AGRICULTURE
+                    PROCEX SEARCH CLASSIFICATION GOODS
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
                 </div>
                 <h6 class="example">Example</h6>
                 <div class="bordered-info red">
-                    PROCEX SEARCH AREA VEHICLE
+                    PROCEX SEARCH CATEGORY VEHICLE
                 </div>
             </div>
         </div>

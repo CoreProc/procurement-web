@@ -40,7 +40,7 @@ class Search extends \Controller
                 })
                 ->whereIn('classification', $classification)
                 ->whereIn('business_category', $categories)
-                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59'))->sum('contract_amt');
+                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
         } elseif (empty($areas) && ! empty($classification) && ! empty($categories)) {
             $results = BidInformation::whereIn('classification', $classification)
@@ -49,7 +49,7 @@ class Search extends \Controller
 
             $total_spent = Award::whereIn('ref_id', BidInformation::whereTenderStatus('Awarded')->whereIn('classification', $classification)
                 ->whereIn('business_category', $categories)
-                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59'))->sum('contract_amt');
+                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
         } elseif ( ! empty($areas) && empty($classification) && ! empty($categories)) {
             $results = BidInformation::whereHas('projectLocation',
@@ -62,7 +62,7 @@ class Search extends \Controller
                 function ($q) use ($areas) {
                     $q->whereIn('location', $areas);
                 })->whereIn('business_category', $categories)
-                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59'))->sum('contract_amt');
+                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
         } elseif ( ! empty($areas) && ! empty($classification) && empty($categories)) {
             $results = BidInformation::whereHas('projectLocation',
@@ -77,7 +77,7 @@ class Search extends \Controller
                     $q->whereIn('location', $areas);
                 })
                 ->whereIn('classification', $classification)
-                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59'))->sum('contract_amt');
+                ->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
         } elseif ( ! empty($areas) && empty($classification) && empty($categories)) {
             $results = BidInformation::whereHas('projectLocation',
@@ -123,7 +123,7 @@ class Search extends \Controller
         ];
 
         return \Response::api()
-            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
+            ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta)->setTtl(3600);
 
     }
 
@@ -168,17 +168,17 @@ class Search extends \Controller
     {
         $data = \Input::json('data');
         $province = $data['province'];
-        $categories = (! empty($data['categories'])) ? $data['categories'] : null;
-        $year = (! empty($data['year'])) ? $data['year'] : null;
+        $category = ( ! empty($data['categories'])) ? $data['categories'] : null;
+        $year = ( ! empty($data['year'])) ? $data['year'] : null;
 
         if (empty($year)) {
             $year = '2009';
         }
 
-        if ( ! empty($categories)) {
+        if ( ! empty($category)) {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->whereIn('business_category', $categories)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
+            })->where('business_category', '=', $category);
         } else {
             $results = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');

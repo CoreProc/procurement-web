@@ -53,6 +53,7 @@ class BidInformation extends TransformerAbstract
 
         $geocoder = new Geocoder($provider);
 
+        $location = $location . ' Philippines';
         $result = $geocoder->geocode($location);
 
         return $result->getBounds();

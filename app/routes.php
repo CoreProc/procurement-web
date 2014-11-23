@@ -34,6 +34,8 @@ Route::group(['prefix' => '/', 'after' => 'cached'], function () {
 
     Route::get('', 'Coreproc\Procex\Controller\HomeController@index');
 
+	Route::get('services', 'Coreproc\Procex\Controller\HomeController@services');
+
     Route::get('explore', 'Coreproc\Procex\Controller\HomeController@explore');
 
 });

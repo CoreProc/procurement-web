@@ -23,6 +23,11 @@ class HomeController extends BaseController {
     {
         $this->layout = \View::make('index');
     }
+
+	public function services()
+	{
+		$this->layout = \View::make('services');
+	}
     
     public function explore()
     {

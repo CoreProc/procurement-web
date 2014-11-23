@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Home | ProcEx - PROCurement EXplorer</title>
     <link rel="stylesheet" type="text/css" href="<% asset('style.css') %>">
-    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
 </head>
 <body layout="row" layout-fill ng-controller="RootCtrl as ctrl">
 
-<div layout-fill class="overlay resultsOverlay" style="padding-top: 56px">
+<div layout-fill class="overlay resultsOverlay" style="padding-top: 60px; padding-bottom: 78px">
     <!-- <h2>Search returned {{ ctrl.searchResults.length + (ctrl.searchResults.length == 1 ? ' result' : ' results') }}</h2> -->
     <!--
     <div class="panel panel-bidList" style="height: 48px">
@@ -21,9 +21,7 @@
         </select>
     </div>
     <div class="panel panel-tenderStatuses" style="top: 51px; height: 104px">
-        <div ng-repeat="status in tenderStatuses">
-            <md-checkbox ng-model="status" aria-label="{{ status }}">{{ status }}</md-checkbox>
-        </div>
+
     </div>
     -->
     <div class="panel panel-searchInput">
@@ -97,18 +95,20 @@
     <div class="header">
         <div flex></div>
         <div class="panel panel-bidList">
-            <select>
-                <option>asdfasdf</option>
-                <option>asdfasdf</option>
-                <option>asdfasdf</option>
-                <option>asdfasdf</option>
-            </select>
+            <select ng-options="noticeType.id as noticeType.name for noticeType in ctrl.noticeTypes" ng-model="ctrl.selectedNoticeType"></select>
         </div>
     </div>
     <main flex>
         <button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': '32px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: absolute; left: 0; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
         <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers"></leaflet>
     </main>
+    <div class="footer" layout="row">
+        <div flex></div>
+        <div style="width: 700px;" layout="row">
+            <md-checkbox flex ng-repeat="status in ctrl.tenderStatuses" ng-model="ctrl.tenderStatusesChecked[$index]" aria-label="{{ status }}">{{ status }}</md-checkbox>
+        </div>
+    </div>
+
 </md-content>
 
 <md-sidenav class="md-sidenav-left" component-id="info" style="width: 500px; max-width: 80%; z-index: 1001">

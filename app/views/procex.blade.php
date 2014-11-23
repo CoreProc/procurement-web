@@ -11,7 +11,7 @@
 <button ng-click="ctrl.filtersOpen = !ctrl.filtersOpen" ng-style="{ 'left': ((ctrl.filtersOpen ? 365 : 0) + 32) + 'px', 'color': ctrl.filtersOpen ? '#03A9F4' : '#333' }" style="font-size: 24px; position: fixed; top: 0; width: 48px; height: 48px; z-index: 10; background: none; border: none; text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)"><i class="fa fa-fw fa-bars"></i></button>
 
 <div layout-fill class="overlay resultsOverlay" style="padding-top: 56px">
-    <!-- <h2>Search returned {{ cardTest.length + (cardTest.length == 1 ? ' result' : ' results') }}</h2> -->
+    <!-- <h2>Search returned {{ ctrl.searchResults.length + (ctrl.searchResults.length == 1 ? ' result' : ' results') }}</h2> -->
     <!--
     <div class="panel panel-bidList" style="height: 48px">
         <select>
@@ -29,15 +29,15 @@
     </div>
     -->
     <div class="panel panel-searchInput">
-        <input type="text" ng-model="search.query" ng-disabled="cardTest.length < 3" placeholder="{{ cardTest.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
+        <input type="text" ng-model="search.query" ng-disabled="ctrl.searchResults.length < 3" placeholder="{{ ctrl.searchResults.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
     </div>
     <div class="panel panel-searchResults">
-        <md-card ng-repeat="card in cardTest | filter: search.query" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
+        <md-card ng-repeat="card in ctrl.searchResults | filter: search.query" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
 
             <!-- <button class="close">&times;</button> -->
 
             <h2 ng-bind="card.name"></h2>
-            <h4 ng-bind="card.budget"></h4>
+            <h4 ng-bind="card.approved_budget | currency: 'Php'"></h4>
         </md-card>
     </div>
 </div>

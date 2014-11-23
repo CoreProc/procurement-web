@@ -5,6 +5,7 @@
             '$rootScope', '$mdSidenav',
             function($rootScope, $mdSidenav) {
                 $rootScope.mapConfig = {
+                    /*
                     bounds: {
                         northEast: {
                             lat: 25.332189,
@@ -14,7 +15,7 @@
                             lat: 0.751745,
                             lng: 105.525891
                         }
-                    },
+                    },*/
                     defaults: {
                         scrollWheelZoom: true
                     },
@@ -23,23 +24,11 @@
                         center: {
                             lat: 12.640338306846802,
                             lng: 120.84960937499999,
-                            message: '0 projects in here',
                             focus: true,
                             draggable: false
                         }
-                    },
-                    events: {
-                        map: {
-                            enable: ['moveend'],
-                            logic: 'emit'
-                        }
                     }
                 };
-
-                $rootScope.$on('leafletDirectiveMap.moveend', function(e, d) {
-                    $rootScope.mapConfig.markers.center['lat'] = e.targetScope.center['lat'];
-                    $rootScope.mapConfig.markers.center['lng'] = e.targetScope.center['lng'];
-                });
 
                 $rootScope.tenderStatuses = [
                     "Cancelled",
@@ -55,10 +44,6 @@
                 for(var i = 0; i < 99; i++) {
                     $rootScope.cardTest.push({ name: 'Hello', budget: 23423432 });
                 }
-
-                $rootScope.openLeftMenu = function() {
-                    $mdSidenav('asdf').toggle();
-                };
 
                 angular.element(function() {
                     angular.element(window).resize();

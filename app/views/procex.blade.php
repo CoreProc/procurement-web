@@ -32,12 +32,13 @@
         <input type="text" ng-model="search.query" ng-disabled="ctrl.searchResults.length < 3" placeholder="{{ ctrl.searchResults.length > 0 ? 'Type keywords here to filter results' : 'Select your search critera first' }}">
     </div>
     <div class="panel panel-searchResults">
-        <md-card ng-repeat="card in ctrl.searchResults | filter: search.query" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
+        <md-card ng-repeat="card in ctrl.searchResults | filter: search.query" ng-click="ctrl.showDetails(card)" ng-style="{ 'transition-delay': ($index * 25) + 'ms' }" class="card md-default-theme">
 
             <!-- <button class="close">&times;</button> -->
 
             <h2 ng-bind="card.name"></h2>
             <h4 ng-bind="card.approved_budget | currency: 'Php'"></h4>
+            <h5 ng-bind="card.notice_type"></h5>
         </md-card>
     </div>
 </div>
@@ -96,14 +97,14 @@
 
 <md-content layout="vertical" layout-fill>
     <main flex>
-        <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers" event-broadcast="mapConfig.events"></leaflet>
+        <leaflet height="100%" maxbounds="mapConfig.bounds" center="mapConfig.center" markers="mapConfig.markers"></leaflet>
     </main>
 </md-content>
 
-<md-sidenav class="md-sidenav-right" is-open="true" component-id="info">
+<md-sidenav class="md-sidenav-left" component-id="info" style="width: 500px; z-index: 1001">
 <hgroup class="info-headings">
-<h1 ng-bind="selected.name">Title</h1>
-<h2 ng-bind="selected.price">Php 1,000,000.00</h2>
+<h1 ng-bind="ctrl.selectedCard.name">Title</h1>
+<h2 ng-bind="ctrl.selectedCard.approved_budget | currency: 'Php'">Php 1,000,000.00</h2>
 </hgroup>
 </md-sidenav>
 

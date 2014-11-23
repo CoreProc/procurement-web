@@ -11,7 +11,7 @@
         "coreproc/globelabs-api": "0.*",
         "toin0u/geotools-laravel": "0.2.*",
         "ellipsesynergie/api-response": "0.7.*",
-        "barryvdh/laravel-httpcache": "0.1.x",
+        "anahkiasen/flatten": "0.5.1",
 		"barryvdh/laravel-cors": "0.2.x"
 	},
 	"autoload": {

@@ -19,7 +19,7 @@ Route::group(['prefix' => '/'], function () {
 
     });
 
-    Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'api', 'after' => 'cache'], function () {
         Route::controller('search', 'Coreproc\Procex\Controller\Api\Search');
         Route::controller('utility', 'Coreproc\Procex\Controller\Api\Utility');
 

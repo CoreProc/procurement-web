@@ -46,16 +46,28 @@
                     <div class="map-marker"><i class="fa fa-map-marker"></i></div>
 
                     <div class="row">
-                        <div class="small-6 columns button-container-1"><a href="#" class="button large success get-started-btn">Get Started</a></div>
-                        <div class="small-6 columns button-container-2"><a href="#" class="button large success services-btn">Our services</a></div>
+                        <div class="small-6 columns button-container-1"><a href="#" class="button large get-started-btn">Get Started</a></div>
+                        <div class="small-6 columns button-container-2"><a href="#" class="button large services-btn">Our services</a></div>
                     </div>
 
-                    <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
+                    <div class="row">
+                        <div class="medium-3 columns invisible-grid">&nbsp;</div>
+                        <div class="medium-6 columns sms-info">
+                            <p>To access the Procex API from your phone, just text the keyword <strong class="blue">INFO</strong> to <strong class="red">21589393</strong> and reply <span class="blue">YES</span></p>
+                        </div>
+                        <div class="medium-3 columns invisible-grid">&nbsp;</div>
+                    </div>
+
+                    <div class="google-play-logo">
+                        <img src="<% asset('assets/img/google-play.png') %>" alt="logo" />
+                    </div>
 
                     <div class="social">
                         <i class="fa fa-facebook"></i>
                         <i class="fa fa-twitter"></i>
                     </div>
+
+                    <div class="copyright">Copyright © 2014 ProcEx All Right Reserved</div>
                 </div>
 
             </div>

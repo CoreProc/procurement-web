@@ -38,6 +38,7 @@
         <div class="row content-row">
             <div class="large-12 columns">
                 <div class="get-started-container">
+                    <img class="home-logo" src="<% asset('assets/img/icon_procex_blue.png') %>" alt="logo" />
                     <h1 class="title">
                         <span class="blue">Proc</span><span class="red">Ex</span>
                     </h1>

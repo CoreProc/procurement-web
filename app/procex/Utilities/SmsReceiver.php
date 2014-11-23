@@ -92,30 +92,29 @@ class SmsReceiver
         if ($year) {
             switch ($action) {
                 case 'classification':
-                    $data = BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
+                    $data = BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
                     $total_spent_amount =
-                        Award::whereIn('ref_id', BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')
+                        Award::whereIn('ref_id', BidInformation::where('classification', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')
                             ->lists('ref_id'))->sum('contract_amt');
 
                     break;
                 case 'area':
                     $data = BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
                         $q->whereLocation($query);
-                    })->where('publish_date', '>=', $year . '-01-01T00:00:00');
+                    })->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
                     $total_spent_amount =
                         Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($query, $year) {
                             $q->whereLocation($query);
-                        })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
+                        })->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
                     break;
                 case 'category':
-                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00');
+                    $data = BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
                     $total_spent_amount =
-                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year .
-                            '-01-01T00:00:00')->lists('ref_id'))
+                        Award::whereIn('ref_id', BidInformation::where('business_category', '=', $query)->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))
                             ->sum('contract_amt');
 
                     break;
@@ -199,14 +198,14 @@ class SmsReceiver
 
         $data = BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
             $q->whereLocation($province);
-        })->where('publish_date', '>=', $year . '-01-01T00:00:00');
+        })->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59');
 
         $province = ucwords($province);
 
         $total_spent_amount =
             Award::whereIn('ref_id', BidInformation::whereHas('projectLocation', function ($q) use ($province, $year) {
                 $q->whereLocation($province);
-            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->lists('ref_id'))->sum('contract_amt');
+            })->where('publish_date', '>=', $year . '-01-01T00:00:00')->where('publish_date', '<=', $year . '-12-31T23:59:59')->lists('ref_id'))->sum('contract_amt');
 
         if (isset($data)) {
             $total_projects = $data->count();

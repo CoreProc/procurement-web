@@ -123,9 +123,9 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Toin0u\Geotools\GeotoolsServiceProvider',
-        'Jlapp\Swaggervel\SwaggervelServiceProvider',
         'EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider',
         'Barryvdh\HttpCache\ServiceProvider',
+        'Barryvdh\Cors\CorsServiceProvider',
     ),
 
     /*

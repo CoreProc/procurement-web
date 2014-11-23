@@ -9,3 +9,4 @@
 // @prepros-append "services/map.js"
 // @prepros-append "services/classifications.js"
 // @prepros-append "services/search.js"
+// @prepros-append "services/notice-types.js"

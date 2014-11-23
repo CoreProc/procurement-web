@@ -20,10 +20,92 @@
 </head>
 
 <body>
-    <div class="row">
-        <h1 class="title">
-            <span class="blue">Proc</span><span class="red">Ex</span>
-        </h1>
+    <header>
+        <div class="row">
+            <div class="large-12 columns">
+                <h1 class="title">
+                    <span class="blue">Proc</span><span class="red">Ex</span>
+                </h1>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4 class="blue"><i class="fa fa-mobile-phone"></i> SMS Services</h4>
+                <p>Access the ProcEx API from your GSM phone by texting the keyword INFO to 21589393, then reply YES (FREE of charge.)</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4 class="blue"><i class="fa fa-key"></i> Keywords</h4>
+                <p>All keywords are prefixed with the string PROCEX.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Help</h4>
+                <p>Get quick help on keywords and stuff.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>INQUIRE</h4>
+                <p>Inquire about the summary of information on bids at your location</p>
+                <div class="bordered-info red">
+                    PROCEX INQUIRE
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>SEARCH</h4>
+                <p>Get a summary of bids using specialty keywords and filters</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Classification</h4>
+                <p>Get the complete list of classification names <a href="https://procex.coreproc.ph/api/classifications">here</a></p>
+                <h6>Syntax</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH CLASSIFICATION &lt;NAME&gt; &lt;YEAR [optional]&gt;
+                </div>
+                <h6 class="example">Example</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH CLASSIFICATION GOODS
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Area</h4>
+                <p>Get the complete list of areas <a href="https://procex.coreproc.ph/api/areas">here</a></p>
+                <h6>Syntax</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH AREA &lt;NAME&gt; &lt;YEAR [optional]&gt;
+                </div>
+                <h6 class="example">Example</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH AREA CAVITE 2009
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns how-to">
+                <h4>Category</h4>
+                <p>Get the complete list of category names <a href="https://procex.coreproc.ph/api/categories">here</a></p>
+                <h6>Syntax</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH CATEGORY &lt;NAME&gt; &lt;YEAR [optional]&gt;
+                </div>
+                <h6 class="example">Example</h6>
+                <div class="bordered-info red">
+                    PROCEX SEARCH CATEGORY VEHICLE
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

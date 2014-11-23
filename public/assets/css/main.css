@@ -32,7 +32,7 @@ html {
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility!important;
-    font-family: sans-serif;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
 }
 
 /*
@@ -194,6 +194,9 @@ header {
 }
 .fa-twitter {
     color: #00aced;
+}
+.fa-git {
+    color: #fff;
 }
 .google-play-logo {
     text-align: center;

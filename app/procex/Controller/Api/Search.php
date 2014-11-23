@@ -10,6 +10,7 @@ namespace Coreproc\Procex\Controller\Api;
 
 use Coreproc\Procex\Model\Award;
 use Coreproc\Procex\Model\BidInformation;
+use Input;
 
 class Search extends \Controller
 {
@@ -164,12 +165,11 @@ class Search extends \Controller
             ->withPaginator($results->paginate(\Config::get('procex.request_limit')), new \Coreproc\Procex\Model\Transformer\BidInformation, 'data', $meta);
     }
 
-    public function postChrisMaxSpecial()
+    public function getChrisMaxSpecial()
     {
-        $data = \Input::json('data');
-        $province = $data['province'];
-        $category = ( ! empty($data['category'])) ? $data['category'] : null;
-        $year = ( ! empty($data['year'])) ? $data['year'] : null;
+        $province = Input::get('province', 'Metro Manila');
+        $category = Input::get('category', null);
+        $year = Input::get('year', null);
 
         if (empty($year)) {
             $year = '2009';
